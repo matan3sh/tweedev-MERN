@@ -1,0 +1,54 @@
+.posts {
+}
+
+.posts .post:not(:last-child) {
+  border-bottom: 1px $hover-color solid;
+}
+
+.post {
+  display: flex;
+  padding-bottom: 10px;
+  transition: background 0.2s ease-in;
+  .post__avatar {
+    width: 50px;
+    height: 50px;
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+  .post__right {
+    margin-left: 20px;
+    .post__header {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+      h2 {
+        font-family: Tahoma, Arial, sans-serif;
+        font-size: 18px;
+        margin-right: 5px;
+      }
+      h5 {
+        margin-right: 5px;
+        color: #555;
+      }
+      span {
+        position: relative;
+        bottom: 5px;
+        margin-right: 5px;
+      }
+    }
+    p {
+      margin-top: 0.5rem;
+      font-weight: lighter;
+      margin-right: 0.5rem;
+    }
+  }
+  &:hover {
+    background-color: #f3f3f3;
+    cursor: pointer;
+  }
+}
+
+.post__footer {
+  margin-top: 0.5rem;
+  display: flex;
+}

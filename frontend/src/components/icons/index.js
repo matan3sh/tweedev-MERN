@@ -1,0 +1,14 @@
+export { default as TwitterIcon } from '@material-ui/icons/Twitter';
+export { default as HomeIcon } from '@material-ui/icons/Home';
+export { default as SupervisedUserCircleIcon } from '@material-ui/icons/SupervisedUserCircle';
+export { default as PersonIcon } from '@material-ui/icons/Person';
+export { default as LockIcon } from '@material-ui/icons/Lock';
+export { default as PostAddIcon } from '@material-ui/icons/PostAdd';
+export { default as AssistantIcon } from '@material-ui/icons/Assistant';
+export { default as MarkunreadMailboxIcon } from '@material-ui/icons/MarkunreadMailbox';
+export { default as AssignmentIndIcon } from '@material-ui/icons/AssignmentInd';
+export { default as WallpaperIcon } from '@material-ui/icons/Wallpaper';
+export { default as SentimentVerySatisfiedIcon } from '@material-ui/icons/SentimentVerySatisfied';
+export { default as ThumbUpAltIcon } from '@material-ui/icons/ThumbUpAlt';
+export { default as ThumbDownIcon } from '@material-ui/icons/ThumbDown';
+export { default as ChatBubbleOutlineIcon } from '@material-ui/icons/ChatBubbleOutline';

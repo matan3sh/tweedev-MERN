@@ -1,0 +1,106 @@
+.sidebar {
+  border-right: 1px solid $hover-color;
+  flex: 0.2;
+  padding: 20px;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.sidebar__twitterIcon {
+  color: $main-color;
+  font-size: 75px !important;
+  margin-left: 10px;
+}
+
+.sidebar__logo {
+  position: relative;
+  .sidebar__twitterIcon-code {
+    position: absolute;
+    color: #fff !important;
+    font-size: 28px;
+  }
+}
+
+.sidebar__option {
+  line-height: 1.3125;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  width: 150px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $second-color;
+    border-radius: 30px;
+    color: $main-color;
+    transition: color 100ms ease-out;
+  }
+
+  .MuiSvgIcon-root {
+    margin: 10px 15px;
+    font-size: 34px !important;
+  }
+
+  h3 {
+    font-weight: 800;
+    font-size: 20px;
+    margin-right: 20px;
+  }
+}
+
+.sidebar__option-active {
+  color: $main-color;
+}
+
+.sidebar__button {
+  background-color: $main-color !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 900 !important;
+  text-transform: capitalize !important;
+  border-radius: 30px !important;
+  height: 50px !important;
+  margin-top: 20px !important;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 28px;
+  width: 250px;
+
+  span {
+    font-size: 19px !important;
+  }
+}
+
+.sidebar__button-mobile {
+  display: none !important;
+  background-color: $main-color !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 900 !important;
+  text-transform: capitalize !important;
+  border-radius: 50% !important;
+  height: 50px !important;
+  margin-top: 20px !important;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 28px;
+}
+
+@media screen and (max-width: 960px) {
+  .sidebar {
+    min-width: 100px;
+    max-width: 100px;
+    padding-left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease-in;
+  }
+  .sidebar__option h3 {
+    display: none;
+  }
+  .sidebar__button {
+    display: none !important;
+  }
+  .sidebar__option {
+    width: 67.5px;
+  }
+  .sidebar__button-mobile {
+    display: block !important;
+  }
+}

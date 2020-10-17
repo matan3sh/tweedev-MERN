@@ -1,0 +1,13 @@
+.homeFeed {
+  flex: 1;
+  overflow-y: scroll;
+  max-height: 93vh;
+}
+
+.homeFeed::-webkit-scrollbar {
+  display: none;
+}
+.homeFeed {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
