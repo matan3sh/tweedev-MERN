@@ -5,6 +5,7 @@ const {
   getProfile,
   submitUserProfile,
   getProfileByUserId,
+  deleteProfile,
 } = require('./profile.controller');
 const auth = require('../../middleware/auth');
 
@@ -34,6 +35,11 @@ router.post(
   ],
   submitUserProfile
 );
+
+// @desc Delete profile, user & posts
+// @route DELETE /api/profile
+// @access Private
+router.delete('/', auth, deleteProfile);
 
 // @desc Get profile by user Id
 // @route GET /api/profile/user/:userId
