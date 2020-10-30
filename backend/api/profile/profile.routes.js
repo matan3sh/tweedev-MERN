@@ -3,6 +3,7 @@ const { check } = require('express-validator');
 const {
   getProfiles,
   getProfile,
+  addExperience,
   submitUserProfile,
   getProfileByUserId,
   deleteProfile,
@@ -20,6 +21,22 @@ router.get('/', getProfiles);
 // @route GET /api/profile/me
 // @access Private
 router.get('/me', auth, getProfile);
+
+// @desc    Add profile experience
+// @route   PUT api/profile/experience
+// @access  Private
+router.put(
+  '/experience',
+  [
+    auth,
+    [
+      check('title', 'Title is required').not().isEmpty(),
+      check('company', 'Company is required').not().isEmpty(),
+      check('from', 'From date is required').not().isEmpty(),
+    ],
+  ],
+  addExperience
+);
 
 // @desc Create or Update user profile
 // @route POST /api/profile
