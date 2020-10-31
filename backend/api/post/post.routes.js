@@ -7,6 +7,8 @@ const {
   deletePost,
   likeAPost,
   unlikeAPost,
+  addCommentToPost,
+  deletePostComment,
 } = require('./post.controller');
 const auth = require('../../middleware/auth');
 
@@ -26,6 +28,20 @@ router.post(
   addPost
 );
 
+// @desc Add comment to a post
+// @route POST /api/posts/comment/:postId
+// @access Private
+router.post(
+  '/comment/:postId',
+  [auth, [check('text', 'Text is required').not().isEmpty()]],
+  addCommentToPost
+);
+
+// @desc Delete comment from a post
+// @route DELETE /api/posts/comment/:postId/:commentId
+// @access Private
+router.delete('/comment/:postId/:commentId', auth, deletePostComment);
+
 // @desc Get single post by id
 // @route GET /api/posts/:postId
 // @access Public
@@ -33,7 +49,7 @@ router.get('/:postId', getPost);
 
 // @desc Delete post
 // @route DELETE /api/posts/:postId
-// @access Public
+// @access Private
 router.delete('/:postId', auth, deletePost);
 
 // @desc Like a post
