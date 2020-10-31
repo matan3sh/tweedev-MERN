@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from 'store/user-login/actions';
 
@@ -6,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { PageHeader } from 'components/shared';
+import { PageHeader, Error, Loader } from 'components/shared';
 import { VpnKeyIcon } from 'components/icons';
 
 const useStyles = makeStyles((theme) => ({
@@ -18,10 +19,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = ({ login }) => {
+const Login = ({ login, errors, userInfo, loading }) => {
+  const history = useHistory();
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    if (userInfo) history.push('/');
+  }, [userInfo, history]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -31,36 +37,41 @@ const Login = ({ login }) => {
   return (
     <>
       <PageHeader title='Login' icon={<VpnKeyIcon />} />
-      <form
-        className={`${classes.root} form-container`}
-        noValidate
-        autoComplete='off'
-        onSubmit={onSubmit}
-      >
-        <TextField
-          id='outlined-email'
-          label='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          variant='outlined'
-        />
-        <TextField
-          id='outlined-password'
-          type='password'
-          label='Password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          variant='outlined'
-        />
-        <Button
-          variant='outlined'
-          color='primary'
-          className='auth__button'
-          type='submit'
+      {errors && <Error errors={errors} />}
+      {loading ? (
+        <Loader />
+      ) : (
+        <form
+          className={`${classes.root} form-container`}
+          noValidate
+          autoComplete='off'
+          onSubmit={onSubmit}
         >
-          Login
-        </Button>
-      </form>
+          <TextField
+            id='outlined-email'
+            label='Email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            variant='outlined'
+          />
+          <TextField
+            id='outlined-password'
+            type='password'
+            label='Password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            variant='outlined'
+          />
+          <Button
+            variant='outlined'
+            color='primary'
+            className='auth__button'
+            type='submit'
+          >
+            Login
+          </Button>
+        </form>
+      )}
     </>
   );
 };
@@ -68,7 +79,7 @@ const Login = ({ login }) => {
 const mapStateToProps = (state) => ({
   userInfo: state.userLogin.userInfo,
   loading: state.userLogin.loading,
-  error: state.userLogin.error,
+  errors: state.userLogin.error,
 });
 
 const mapDispatchToProps = {

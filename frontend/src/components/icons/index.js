@@ -14,3 +14,5 @@ export { default as ThumbDownIcon } from '@material-ui/icons/ThumbDown';
 export { default as ChatBubbleOutlineIcon } from '@material-ui/icons/ChatBubbleOutline';
 export { default as VpnKeyIcon } from '@material-ui/icons/VpnKey';
 export { default as DetailsIcon } from '@material-ui/icons/Details';
+export { default as ArtTrackIcon } from '@material-ui/icons/ArtTrack';
+export { default as LockOpenIcon } from '@material-ui/icons/LockOpen';

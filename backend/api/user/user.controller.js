@@ -1,8 +1,8 @@
 const { validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const config = require('config');
+const { generateToken } = require('../../utils/generateToken');
+
 const User = require('../../models/User');
 
 register = async (req, res) => {
@@ -26,15 +26,12 @@ register = async (req, res) => {
     user.password = await bcrypt.hash(password, salt);
     await user.save();
     const payload = { user: { id: user.id } };
-    jwt.sign(
-      payload,
-      config.get('jwtSecret'),
-      { expiresIn: 36000 },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(payload),
+    });
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server Error');
@@ -55,15 +52,12 @@ login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
     const payload = { user: { id: user.id } };
-    jwt.sign(
-      payload,
-      config.get('jwtSecret'),
-      { expiresIn: 36000 },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(payload),
+    });
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server Error');
