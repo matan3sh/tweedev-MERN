@@ -12,6 +12,7 @@ const {
   addEducation,
   deleteProfileEdu,
   updateProfileEdu,
+  getGithubRepos,
 } = require('./profile.controller');
 const auth = require('../../middleware/auth');
 
@@ -104,5 +105,10 @@ router.put('/education/:eduId', auth, updateProfileEdu);
 // @route GET /api/profile/user/:userId
 // @access Public
 router.get('/user/:userId', getProfileByUserId);
+
+// @desc Get user repos from github
+// @route GET /api/profile/github/:username
+// @access Public
+router.get('/github/:username', getGithubRepos);
 
 module.exports = router;
