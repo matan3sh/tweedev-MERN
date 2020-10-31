@@ -7,6 +7,11 @@ const {
   submitUserProfile,
   getProfileByUserId,
   deleteProfile,
+  deleteProfileExp,
+  updateProfileExp,
+  addEducation,
+  deleteProfileEdu,
+  updateProfileEdu,
 } = require('./profile.controller');
 const auth = require('../../middleware/auth');
 
@@ -23,9 +28,9 @@ router.get('/', getProfiles);
 router.get('/me', auth, getProfile);
 
 // @desc    Add profile experience
-// @route   PUT api/profile/experience
+// @route   POST api/profile/experience
 // @access  Private
-router.put(
+router.post(
   '/experience',
   [
     auth,
@@ -36,6 +41,23 @@ router.put(
     ],
   ],
   addExperience
+);
+
+// @desc    Add profile education
+// @route   POST api/profile/education
+// @access  Private
+router.post(
+  '/education',
+  [
+    auth,
+    [
+      check('school', 'School is required').not().isEmpty(),
+      check('degree', 'Degree is required').not().isEmpty(),
+      check('fieldofstudy', 'Field of study is required').not().isEmpty(),
+      check('from', 'From date is required').not().isEmpty(),
+    ],
+  ],
+  addEducation
 );
 
 // @desc Create or Update user profile
@@ -57,6 +79,26 @@ router.post(
 // @route DELETE /api/profile
 // @access Private
 router.delete('/', auth, deleteProfile);
+
+// @desc Delete experience from profile
+// @route DELETE /api/profile/experience/:expId
+// @access Private
+router.delete('/experience/:expId', auth, deleteProfileExp);
+
+// @desc Delete education from profile
+// @route DELETE /api/profile/education/:eduId
+// @access Private
+router.delete('/education/:eduId', auth, deleteProfileEdu);
+
+// @desc Update experience in profile
+// @route PUT /api/profile/experience/:expId
+// @access Private
+router.put('/experience/:expId', auth, updateProfileExp);
+
+// @desc Update education in profile
+// @route PUT /api/profile/education/:eduId
+// @access Private
+router.put('/education/:eduId', auth, updateProfileEdu);
 
 // @desc Get profile by user Id
 // @route GET /api/profile/user/:userId

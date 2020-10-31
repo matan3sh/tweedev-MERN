@@ -139,6 +139,123 @@ addExperience = async (req, res) => {
   }
 };
 
+deleteProfileExp = async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+    const removeIndex = profile.experience
+      .map((item) => item.id)
+      .indexOf(req.params.expId);
+    profile.experience.splice(removeIndex, 1);
+    await profile.save();
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+};
+
+updateProfileExp = async (req, res) => {
+  const { title, company, location, from, to, current, description } = req.body;
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+    const updatedIndex = profile.experience
+      .map((item) => item.id)
+      .indexOf(req.params.expId);
+    if (title) profile.experience[updatedIndex].title = title;
+    if (company) profile.experience[updatedIndex].company = company;
+    if (location) profile.experience[updatedIndex].location = location;
+    if (from) profile.experience[updatedIndex].from = from;
+    if (to) profile.experience[updatedIndex].to = to;
+    if (current) profile.experience[updatedIndex].current = current;
+    if (description) profile.experience[updatedIndex].description = description;
+    await profile.save();
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+};
+
+addEducation = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  const {
+    school,
+    degree,
+    fieldofstudy,
+    from,
+    to,
+    current,
+    description,
+  } = req.body;
+  const newEdu = {
+    school,
+    degree,
+    fieldofstudy,
+    from,
+    to,
+    current,
+    description,
+  };
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+    profile.education.unshift(newEdu);
+    await profile.save();
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+};
+
+deleteProfileEdu = async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+    const removeIndex = profile.education
+      .map((item) => item.id)
+      .indexOf(req.params.eduId);
+    profile.education.splice(removeIndex, 1);
+    await profile.save();
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+};
+
+updateProfileEdu = async (req, res) => {
+  const {
+    school,
+    degree,
+    fieldofstudy,
+    from,
+    to,
+    current,
+    description,
+  } = req.body;
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+    const updatedIndex = profile.education
+      .map((item) => item.id)
+      .indexOf(req.params.eduId);
+    if (school) profile.education[updatedIndex].school = school;
+    if (degree) profile.education[updatedIndex].degree = degree;
+    if (fieldofstudy)
+      profile.education[updatedIndex].fieldofstudy = fieldofstudy;
+    if (from) profile.education[updatedIndex].from = from;
+    if (to) profile.education[updatedIndex].to = to;
+    if (current) profile.education[updatedIndex].current = current;
+    if (description) profile.education[updatedIndex].description = description;
+    await profile.save();
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+};
+
 module.exports = {
   getProfiles,
   getProfile,
@@ -146,4 +263,9 @@ module.exports = {
   getProfileByUserId,
   deleteProfile,
   addExperience,
+  deleteProfileExp,
+  updateProfileExp,
+  addEducation,
+  deleteProfileEdu,
+  updateProfileEdu,
 };
