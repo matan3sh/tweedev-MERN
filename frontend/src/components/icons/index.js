@@ -12,3 +12,5 @@ export { default as SentimentVerySatisfiedIcon } from '@material-ui/icons/Sentim
 export { default as ThumbUpAltIcon } from '@material-ui/icons/ThumbUpAlt';
 export { default as ThumbDownIcon } from '@material-ui/icons/ThumbDown';
 export { default as ChatBubbleOutlineIcon } from '@material-ui/icons/ChatBubbleOutline';
+export { default as VpnKeyIcon } from '@material-ui/icons/VpnKey';
+export { default as DetailsIcon } from '@material-ui/icons/Details';
