@@ -1,11 +1,14 @@
 .profileBody {
   display: flex;
+  justify-content: space-between;
   padding: 20px;
   .profileBody__left {
     border-right: 1px $hover-color solid;
+    flex: 0.5;
   }
   .profileBody__right {
     padding-left: 20px;
+    flex: 0.5;
   }
   h3 {
     margin-bottom: 10px;

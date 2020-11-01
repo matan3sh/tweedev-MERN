@@ -84,3 +84,22 @@ a {
     min-width: 118%;
   }
 }
+
+@media screen and (max-width: 485px) {
+  .app__container {
+    min-width: 100%;
+    overflow-x: hidden;
+  }
+  .page__header {
+    .page__header-title {
+      padding-bottom: 20px;
+      padding-left: 10px;
+      svg {
+        font-size: 22px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+    }
+  }
+}

@@ -2,52 +2,31 @@ import React from 'react';
 
 import { GitHubIcon } from 'components/icons';
 
-const ProfileFooter = () => {
+const ProfileFooter = ({ repos }) => {
   return (
     <div className='profileFooter'>
       <h3>
         <GitHubIcon /> Github Repos
       </h3>
-      <div className='profileFooter__card'>
-        <div className='profileFooter__card-left'>
-          <h4>Repo One</h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat,
-            laborum!
-          </p>
-        </div>
-        <div className='profileFooter__card-right'>
-          <div className='top'>
-            <span>Stars: 44</span>
+      {repos?.map((repo) => (
+        <div className='profileFooter__card' key={repo.id}>
+          <div className='profileFooter__card-left'>
+            <h4>{repo.name}</h4>
+            <p>{repo.description}</p>
           </div>
-          <div className='middle'>
-            <span>Watchers: 21</span>
-          </div>
-          <div className='bottom'>
-            <span>Forks: 25</span>
-          </div>
-        </div>
-      </div>
-      <div className='profileFooter__card'>
-        <div className='profileFooter__card-left'>
-          <h4>Repo One</h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat,
-            laborum!
-          </p>
-        </div>
-        <div className='profileFooter__card-right'>
-          <div className='top'>
-            <span>Stars: 44</span>
-          </div>
-          <div className='middle'>
-            <span>Watchers: 21</span>
-          </div>
-          <div className='bottom'>
-            <span>Forks: 25</span>
+          <div className='profileFooter__card-right'>
+            <div className='top'>
+              <span>Stars: {repo.stargazers_count}</span>
+            </div>
+            <div className='middle'>
+              <span>Watchers: {repo.watchers_count}</span>
+            </div>
+            <div className='bottom'>
+              <span>Forks: {repo.forks}</span>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };

@@ -1,29 +1,19 @@
 import React from 'react';
 
-const ProfileExp = () => {
+const ProfileExp = ({ experience }) => {
   return (
     <div className='profileBody__left'>
       <h3>Experience</h3>
-      <div className='profileBody__card'>
-        <h5>Microsoft</h5>
-        <small>Oct 2011 - Current</small>
-        <h6>Full Stack Developer</h6>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-          placeat, dolorum ullam ipsam, sapiente suscipit dicta eius velit amet
-          aspernatur asperiores modi quidem expedita fugit.
-        </p>
-      </div>
-      <div className='profileBody__card'>
-        <h5>Microsoft</h5>
-        <small>Oct 2011 - Current</small>
-        <h6>Full Stack Developer</h6>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-          placeat, dolorum ullam ipsam, sapiente suscipit dicta eius velit amet
-          aspernatur asperiores modi quidem expedita fugit.
-        </p>
-      </div>
+      {experience?.map((exp) => (
+        <div className='profileBody__card' key={exp._id}>
+          <h5>{exp.company}</h5>
+          <small>
+            {exp.from} - {exp.current ? 'Current' : exp.to}
+          </small>
+          <h6>{exp.title}</h6>
+          <p>{exp.description}</p>
+        </div>
+      ))}
     </div>
   );
 };

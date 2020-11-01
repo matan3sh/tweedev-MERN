@@ -9,17 +9,14 @@ import {
   AssignmentTurnedInIcon,
 } from 'components/icons';
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ avatar, name, status, location, bio, skills }) => {
   return (
     <div className='profileHeader'>
       <div className='profileHeader__left'>
-        <img
-          src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png'
-          alt='avatar'
-        />
-        <h3>Matan Shaviro</h3>
-        <h5>Full Stack Developer</h5>
-        <h6>Tel-Aviv, ISR</h6>
+        <img src={avatar} alt='avatar' />
+        <h3>{name}</h3>
+        <h5>{status}</h5>
+        <h6>{location}</h6>
         <div className='profileHeader__left-icons'>
           <YouTubeIcon />
           <TwitterIcon />
@@ -30,27 +27,13 @@ const ProfileHeader = () => {
       </div>
       <div className='profileHeader__right'>
         <h5>Bio</h5>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-          doloremque nesciunt, repellendus nostrum deleniti recusandae nobis
-          neque modi perspiciatis similique?
-        </p>
+        <p>{bio}</p>
         <div className='profileHeader__right-skills'>
-          <span>
-            <AssignmentTurnedInIcon /> React
-          </span>
-          <span>
-            <AssignmentTurnedInIcon />
-            Vue
-          </span>
-          <span>
-            <AssignmentTurnedInIcon />
-            Node
-          </span>
-          <span>
-            <AssignmentTurnedInIcon />
-            Mongo
-          </span>
+          {skills?.map((skill, index) => (
+            <span key={index}>
+              <AssignmentTurnedInIcon /> {skill}
+            </span>
+          ))}
         </div>
       </div>
     </div>

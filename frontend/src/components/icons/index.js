@@ -24,3 +24,9 @@ export { default as AssignmentTurnedInIcon } from '@material-ui/icons/Assignment
 export { default as GitHubIcon } from '@material-ui/icons/GitHub';
 export { default as DashboardIcon } from '@material-ui/icons/Dashboard';
 export { default as AccountBalanceWalletIcon } from '@material-ui/icons/AccountBalanceWallet';
+export { default as FaceIcon } from '@material-ui/icons/Face';
+export { default as PermContactCalendarIcon } from '@material-ui/icons/PermContactCalendar';
+export { default as BusinessCenterIcon } from '@material-ui/icons/BusinessCenter';
+export { default as CastForEducationIcon } from '@material-ui/icons/CastForEducation';
+export { default as DeleteIcon } from '@material-ui/icons/Delete';
+export { default as EditIcon } from '@material-ui/icons/Edit';

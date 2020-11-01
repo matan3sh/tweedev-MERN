@@ -27,6 +27,7 @@
         border-radius: 8px;
         font-size: 12px;
         box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px !important;
+        width: 85px;
       }
     }
   }
@@ -56,6 +57,13 @@
         div {
           font-size: 12px;
           min-width: 90px;
+        }
+      }
+      .profileFooter__card-left {
+        p {
+          margin-top: 5px;
+          margin-bottom: 20px;
+          margin-right: 10px;
         }
       }
     }
