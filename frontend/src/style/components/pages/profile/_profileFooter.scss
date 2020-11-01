@@ -22,11 +22,11 @@
     .profileFooter__card-right {
       margin-bottom: 1rem;
       div {
-        color: #fff;
         margin: 5px 0;
         padding: 8px;
         border-radius: 8px;
         font-size: 12px;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px !important;
       }
     }
   }
@@ -36,17 +36,20 @@
   border-bottom: 1px #ccc dotted;
 }
 
-.red {
-  background-color: #aa2e25;
+.top {
+  background-color: #5c98ff;
+  color: #fff;
 }
-.green {
-  background-color: #00695f;
+.middle {
+  background-color: #9fd7f9;
+  color: #fff;
 }
-.orange {
-  background-color: #ff5722;
+.bottom {
+  background-color: #d8effd;
+  color: #000;
 }
 
-@media screen and (max-width: 670px) {
+@media screen and (max-width: 1070px) {
   .profileFooter {
     .profileFooter__card {
       .profileFooter__card-right {

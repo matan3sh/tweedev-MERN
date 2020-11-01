@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { register, setError } from 'store/user-auth/actions';
 
@@ -19,17 +18,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Register = ({ register, errors, userInfo, loading, setError }) => {
-  const history = useHistory();
+const Register = ({ register, errors, loading, setError }) => {
   const classes = useStyles();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-
-  useEffect(() => {
-    if (userInfo) history.push('/');
-  }, [userInfo, history]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -98,7 +92,6 @@ const Register = ({ register, errors, userInfo, loading, setError }) => {
 };
 
 const mapStateToProps = (state) => ({
-  userInfo: state.userAuth.userInfo,
   loading: state.userAuth.loading,
   errors: state.userAuth.error,
 });

@@ -17,13 +17,13 @@ const ProfileFooter = () => {
           </p>
         </div>
         <div className='profileFooter__card-right'>
-          <div className='red'>
+          <div className='top'>
             <span>Stars: 44</span>
           </div>
-          <div className='green'>
+          <div className='middle'>
             <span>Watchers: 21</span>
           </div>
-          <div className='orange'>
+          <div className='bottom'>
             <span>Forks: 25</span>
           </div>
         </div>
@@ -37,13 +37,13 @@ const ProfileFooter = () => {
           </p>
         </div>
         <div className='profileFooter__card-right'>
-          <div className='red'>
+          <div className='top'>
             <span>Stars: 44</span>
           </div>
-          <div className='green'>
+          <div className='middle'>
             <span>Watchers: 21</span>
           </div>
-          <div className='orange'>
+          <div className='bottom'>
             <span>Forks: 25</span>
           </div>
         </div>

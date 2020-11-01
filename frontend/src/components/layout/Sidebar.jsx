@@ -12,6 +12,7 @@ import {
   PostAddIcon,
   ArtTrackIcon,
   LockOpenIcon,
+  DashboardIcon,
 } from 'components/icons';
 import { Button, IconButton } from '@material-ui/core';
 
@@ -43,6 +44,13 @@ const Sidebar = ({ userInfo, logout }) => {
         >
           <SupervisedUserCircleIcon /> <h3>Users</h3>
         </NavLink>
+        <NavLink
+          to='/dashboard'
+          activeClassName='sidebar__option-active'
+          className='sidebar__option'
+        >
+          <DashboardIcon /> <h3>Dashboard</h3>
+        </NavLink>
         <span className='sidebar__option' onClick={() => logout()}>
           <LockIcon /> <h3>Logout</h3>
         </span>
@@ -64,6 +72,13 @@ const Sidebar = ({ userInfo, logout }) => {
         className='sidebar__option'
       >
         <HomeIcon /> <h3>Home</h3>
+      </NavLink>
+      <NavLink
+        to='/users'
+        activeClassName='sidebar__option-active'
+        className='sidebar__option'
+      >
+        <SupervisedUserCircleIcon /> <h3>Users</h3>
       </NavLink>
       <NavLink
         to='/login'

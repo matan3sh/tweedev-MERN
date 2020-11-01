@@ -22,3 +22,5 @@ export { default as LinkedInIcon } from '@material-ui/icons/LinkedIn';
 export { default as InstagramIcon } from '@material-ui/icons/Instagram';
 export { default as AssignmentTurnedInIcon } from '@material-ui/icons/AssignmentTurnedIn';
 export { default as GitHubIcon } from '@material-ui/icons/GitHub';
+export { default as DashboardIcon } from '@material-ui/icons/Dashboard';
+export { default as AccountBalanceWalletIcon } from '@material-ui/icons/AccountBalanceWallet';
