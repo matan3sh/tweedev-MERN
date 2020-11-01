@@ -1,0 +1,112 @@
+.profileHeader {
+  display: flex;
+  border-bottom: 1px $hover-color solid;
+  .profileHeader__left {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px $hover-color solid;
+
+    padding-right: 20px;
+    img {
+      width: 120px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+    h3 {
+      margin-top: 5px !important;
+      font-family: Tahoma-Bold;
+    }
+    h3,
+    h5,
+    h6 {
+      margin: 2px 0;
+    }
+    .profileHeader__left-icons {
+      display: flex;
+      margin-top: 5px;
+      svg {
+        font-size: 30px;
+        margin-right: 3px;
+        transition: 0.2s color ease-in;
+        &:hover {
+          color: $main-color;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .profileHeader__right {
+    margin: 2rem;
+    margin-left: 0.5rem;
+    h5 {
+      font-family: Tahoma-Bold;
+      font-size: 28px;
+    }
+    p {
+      margin-top: 5px;
+    }
+    .profileHeader__right-skills {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      span {
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          font-size: 20px;
+          color: $main-color;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .profileHeader {
+    flex-direction: column;
+    .profileHeader__left {
+      border-right: none;
+    }
+    .profileHeader__right {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profileHeader {
+    .profileHeader__left {
+      margin: 0.5rem;
+      padding-right: 5px;
+      img {
+        width: 80px;
+      }
+      h3 {
+        font-size: 16px;
+      }
+    }
+    .profileHeader__right {
+      padding: 5px;
+      h5 {
+        font-family: Tahoma-Bold;
+        font-size: 16px;
+      }
+      p {
+        font-size: 14px;
+      }
+      .profileHeader__right-skills {
+        margin-top: 1rem;
+        span {
+          margin-right: 5px;
+          svg {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

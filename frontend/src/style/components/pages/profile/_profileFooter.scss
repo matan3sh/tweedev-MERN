@@ -1,0 +1,60 @@
+.profileFooter {
+  padding: 20px;
+  border-top: 1px $hover-color solid;
+  h3 {
+    display: flex;
+    align-items: center;
+    color: $main-color;
+    font-family: Tahoma-Bold;
+    svg {
+      margin-right: 10px;
+    }
+  }
+  .profileFooter__card {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    .profileFooter__card-left {
+      h4 {
+        font-family: Tahoma-Bold;
+      }
+    }
+    .profileFooter__card-right {
+      margin-bottom: 1rem;
+      div {
+        color: #fff;
+        margin: 5px 0;
+        padding: 8px;
+        border-radius: 8px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.profileFooter .profileFooter__card:not(:last-child) {
+  border-bottom: 1px #ccc dotted;
+}
+
+.red {
+  background-color: #aa2e25;
+}
+.green {
+  background-color: #00695f;
+}
+.orange {
+  background-color: #ff5722;
+}
+
+@media screen and (max-width: 670px) {
+  .profileFooter {
+    .profileFooter__card {
+      .profileFooter__card-right {
+        div {
+          font-size: 12px;
+          min-width: 90px;
+        }
+      }
+    }
+  }
+}
