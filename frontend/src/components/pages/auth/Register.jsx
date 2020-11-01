@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { register } from 'store/user-auth/actions';
+import { register, setError } from 'store/user-auth/actions';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Register = ({ register, errors, userInfo, loading }) => {
+const Register = ({ register, errors, userInfo, loading, setError }) => {
   const history = useHistory();
   const classes = useStyles();
   const [name, setName] = useState('');
@@ -33,7 +33,10 @@ const Register = ({ register, errors, userInfo, loading }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (password !== passwordConfirm) return;
+    if (password !== passwordConfirm) {
+      setError([{ msg: 'Password and Confirm Password do not match' }]);
+      return;
+    }
     register(name, email, password);
   };
 
@@ -85,7 +88,6 @@ const Register = ({ register, errors, userInfo, loading }) => {
             color='primary'
             className='auth__button'
             type='submit'
-            disabled={password !== passwordConfirm}
           >
             Register
           </Button>
@@ -103,6 +105,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   register,
+  setError,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

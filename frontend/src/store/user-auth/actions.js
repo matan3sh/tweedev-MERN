@@ -44,6 +44,10 @@ export const register = (name, email, password) => async (dispatch) => {
   }
 };
 
+export const setError = (error) => (dispatch) => {
+  dispatch({ type: 'SET_ERROR', payload: error });
+};
+
 export const clearError = () => (dispatch) => {
   dispatch({ type: 'CLEAR_ERROR' });
 };

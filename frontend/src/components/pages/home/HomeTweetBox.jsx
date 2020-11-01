@@ -17,7 +17,6 @@ const HomeTweetBox = ({ userInfo }) => {
             />
             <input
               value={tweet}
-              onChange={(e) => setTweet(e.target.value)}
               type='text'
               placeholder='Must Login to Tweet'
             />

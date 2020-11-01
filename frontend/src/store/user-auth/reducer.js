@@ -32,6 +32,11 @@ export default function reducer(state = initialState, action) {
         error: null,
         userInfo: null,
       };
+    case 'SET_ERROR':
+      return {
+        ...state,
+        error: action.payload,
+      };
     case 'CLEAR_ERROR':
       return {
         ...state,
