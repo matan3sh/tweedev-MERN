@@ -2,17 +2,12 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const GuestRoute = ({
-  component: Component,
-  userFromRegister,
-  userFromLogin,
-  ...rest
-}) => {
+const GuestRoute = ({ component: Component, userInfo, ...rest }) => {
   return (
     <Route
       {...rest}
       render={(props) =>
-        userFromRegister === null || userFromLogin === null ? (
+        !userInfo ? (
           <Component {...rest} {...props} />
         ) : (
           <Redirect to={{ pathname: '/' }} />
@@ -23,8 +18,7 @@ const GuestRoute = ({
 };
 
 const mapStateToProps = (state) => ({
-  userFromRegister: state.userRegister.userInfo,
-  userFromLogin: state.userLogin.userInfo,
+  userInfo: state.userAuth.userInfo,
 });
 
 export default connect(mapStateToProps, null)(GuestRoute);

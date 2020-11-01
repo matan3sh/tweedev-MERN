@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { login } from 'store/user-login/actions';
+import { login } from 'store/user-auth/actions';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -77,9 +77,9 @@ const Login = ({ login, errors, userInfo, loading }) => {
 };
 
 const mapStateToProps = (state) => ({
-  userInfo: state.userLogin.userInfo,
-  loading: state.userLogin.loading,
-  errors: state.userLogin.error,
+  userInfo: state.userAuth.userInfo,
+  loading: state.userAuth.loading,
+  errors: state.userAuth.error,
 });
 
 const mapDispatchToProps = {

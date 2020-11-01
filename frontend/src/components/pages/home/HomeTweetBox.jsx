@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { Button, Avatar, IconButton } from '@material-ui/core';
 import { WallpaperIcon, SentimentVerySatisfiedIcon } from 'components/icons';
 
-const HomeTweetBox = ({ userFromRegister, userFromLogin }) => {
+const HomeTweetBox = ({ userInfo }) => {
   const [tweet, setTweet] = useState('');
   return (
     <div className='tweetBox'>
-      {userFromRegister === null && userFromLogin === null ? (
+      {userInfo === null ? (
         <form>
           <div className='tweetBox__input'>
             <Avatar
@@ -32,11 +32,8 @@ const HomeTweetBox = ({ userFromRegister, userFromLogin }) => {
               </IconButton>
             </div>
             <Button
-              className={`${
-                userFromRegister === null ||
-                (userFromLogin === null && 'disabled')
-              }`}
-              disabled={userFromRegister === null || userFromLogin === null}
+              className={`${userInfo === null && 'disabled'}`}
+              disabled={userInfo === null}
             >
               Tweet
             </Button>
@@ -47,11 +44,7 @@ const HomeTweetBox = ({ userFromRegister, userFromLogin }) => {
           <div className='tweetBox__input'>
             <Avatar
               className='tweetBox__input-avatar'
-              src={`${
-                userFromRegister
-                  ? userFromRegister.avatar
-                  : userFromLogin.avatar
-              }`}
+              src={`${userInfo?.avatar}`}
             />
             <input
               value={tweet}
@@ -83,8 +76,7 @@ const HomeTweetBox = ({ userFromRegister, userFromLogin }) => {
 };
 
 const mapStateToProps = (state) => ({
-  userFromRegister: state.userRegister.userInfo,
-  userFromLogin: state.userLogin.userInfo,
+  userInfo: state.userAuth.userInfo,
 });
 
 export default connect(mapStateToProps, null)(HomeTweetBox);

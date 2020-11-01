@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { register } from 'store/user-register/actions';
+import { register } from 'store/user-auth/actions';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -96,9 +96,9 @@ const Register = ({ register, errors, userInfo, loading }) => {
 };
 
 const mapStateToProps = (state) => ({
-  userInfo: state.userRegister.userInfo,
-  loading: state.userRegister.loading,
-  errors: state.userRegister.error,
+  userInfo: state.userAuth.userInfo,
+  loading: state.userAuth.loading,
+  errors: state.userAuth.error,
 });
 
 const mapDispatchToProps = {

@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { clearUserRegister } from 'store/user-register/actions';
-import { clearUserLogin } from 'store/user-login/actions';
+import { logout } from 'store/user-auth/actions';
 
 import {
   HomeIcon,
@@ -18,12 +17,7 @@ import { Button, IconButton } from '@material-ui/core';
 
 import CodeIcon from '@material-ui/icons/Code';
 
-const Sidebar = ({
-  userFromRegister,
-  userFromLogin,
-  clearUserRegister,
-  clearUserLogin,
-}) => {
+const Sidebar = ({ userInfo, logout }) => {
   const userLinks = (
     <>
       <div className='sidebar__options'>
@@ -49,13 +43,7 @@ const Sidebar = ({
         >
           <SupervisedUserCircleIcon /> <h3>Users</h3>
         </NavLink>
-        <span
-          className='sidebar__option'
-          onClick={() => {
-            clearUserRegister();
-            clearUserLogin();
-          }}
-        >
+        <span className='sidebar__option' onClick={() => logout()}>
           <LockIcon /> <h3>Logout</h3>
         </span>
       </div>
@@ -99,21 +87,17 @@ const Sidebar = ({
         <TwitterIcon className='sidebar__twitterIcon' />
         <CodeIcon className='sidebar__twitterIcon-code' />
       </IconButton>
-      {userFromRegister === null && userFromLogin === null
-        ? guestLinks
-        : userLinks}
+      {!userInfo ? guestLinks : userLinks}
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
-  userFromRegister: state.userRegister.userInfo,
-  userFromLogin: state.userLogin.userInfo,
+  userInfo: state.userAuth.userInfo,
 });
 
 const mapDispatchToProps = {
-  clearUserLogin,
-  clearUserRegister,
+  logout,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
