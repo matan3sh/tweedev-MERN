@@ -15,7 +15,6 @@ getProfiles = async (req, res) => {
 };
 
 getProfile = async (req, res) => {
-  console.log(req.user);
   try {
     const profile = await Profile.findOne({
       user: req.user.id,

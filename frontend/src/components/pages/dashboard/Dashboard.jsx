@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { getProfile, clearProfile } from 'store/profile/actions';
 
 import { PageHeader } from 'components/shared';
 import { AccountBalanceWalletIcon } from 'components/icons';
@@ -7,7 +8,13 @@ import DashboardHeader from './DashboardHeader';
 import DashboardExpList from './DashboardExpList';
 import DashboardEduList from './DashboardEduList';
 
-const Dashboard = ({ userInfo }) => {
+const Dashboard = ({ userInfo, getProfile, userProfile, clearProfile }) => {
+  useEffect(() => {
+    getProfile();
+    return () => {
+      clearProfile();
+    };
+  }, [getProfile, clearProfile]);
   return (
     <>
       <PageHeader title='Dashboard' icon={<AccountBalanceWalletIcon />} />
@@ -24,6 +31,12 @@ const Dashboard = ({ userInfo }) => {
 
 const mapStateToProps = (state) => ({
   userInfo: state.userAuth.userInfo,
+  userProfile: state.profile.userProfile,
 });
 
-export default connect(mapStateToProps, null)(Dashboard);
+const mapDispatchToProps = {
+  getProfile,
+  clearProfile,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

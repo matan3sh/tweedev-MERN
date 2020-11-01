@@ -26,7 +26,7 @@ const Profile = ({
     return () => {
       clearProfile();
     };
-  }, [getProfile]);
+  }, [getProfile, clearProfile]);
 
   useEffect(() => {
     if (userProfile?.githubusername) getRepos(userProfile?.githubusername);
