@@ -45,14 +45,7 @@ const Profile = ({
         <Loader />
       ) : (
         <div className='profile'>
-          <ProfileHeader
-            avatar={userProfile?.user?.avatar}
-            name={userProfile?.user?.name}
-            status={userProfile?.status}
-            location={userProfile?.location}
-            bio={userProfile?.bio}
-            skills={userProfile?.skills}
-          />
+          <ProfileHeader userProfile={userProfile} />
           <ProfileBody
             experience={userProfile?.experience}
             education={userProfile?.education}

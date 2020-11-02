@@ -70,11 +70,21 @@ const DashboardEditProfile = ({
           skills: userProfile?.skills,
           githubusername: userProfile?.githubusername,
           bio: userProfile?.bio,
-          twitter: userProfile?.twitter,
-          facebook: userProfile?.facebook,
-          linkedin: userProfile?.linkedin,
-          youtube: userProfile?.youtube,
-          instagram: userProfile?.instagram,
+          twitter: userProfile?.social?.twitter
+            ? userProfile?.social.twitter
+            : '',
+          facebook: userProfile?.social?.facebook
+            ? userProfile?.social.facebook
+            : '',
+          linkedin: userProfile?.social?.linkedin
+            ? userProfile?.social.linkedin
+            : '',
+          youtube: userProfile?.social?.youtube
+            ? userProfile?.social.youtube
+            : '',
+          instagram: userProfile?.social?.instagram
+            ? userProfile?.social.instagram
+            : '',
         });
     }, 1000);
   }, [userProfile]);
@@ -84,7 +94,7 @@ const DashboardEditProfile = ({
 
   const onUpdateProfile = (formData) => {
     createProfile(formData);
-    if (success) onClose();
+    setToggleSocialLinks(false);
   };
 
   return (
@@ -185,7 +195,7 @@ const DashboardEditProfile = ({
               onClick={() => setToggleSocialLinks((prev) => !prev)}
               className='toggle__social-btn'
             >
-              Add Social Links
+              {!toggleSocialLinks ? 'Open Social Links' : 'Close Social Links'}
             </Button>
           </>
         )}

@@ -63,7 +63,7 @@ const DashboardCreateProfile = ({
 
   const onCreateProfile = (formData) => {
     createProfile(formData);
-    if (success) onClose();
+    setToggleSocialLinks(false);
   };
 
   return (
@@ -165,7 +165,7 @@ const DashboardCreateProfile = ({
               onClick={() => setToggleSocialLinks((prev) => !prev)}
               className='toggle__social-btn'
             >
-              Add Social Links
+              {!toggleSocialLinks ? 'Open Social Links' : 'Close Social Links'}
             </Button>
           </>
         )}

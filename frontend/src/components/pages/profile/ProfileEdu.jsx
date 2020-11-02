@@ -1,4 +1,5 @@
 import React from 'react';
+import Moment from 'react-moment';
 
 const ProfileEdu = ({ education }) => {
   return (
@@ -8,7 +9,12 @@ const ProfileEdu = ({ education }) => {
         <div className='profileBody__card' key={edu._id}>
           <h5>{edu.school}</h5>
           <small>
-            {edu.from} - {edu.current ? 'Current' : edu.to}
+            <Moment format='ll'>{edu.from}</Moment> -
+            {edu.current ? (
+              <span> Current</span>
+            ) : (
+              <Moment format='ll'>{edu.to}</Moment>
+            )}{' '}
           </small>
           <h6>
             {edu.degree}, {edu.fieldofstudy}
