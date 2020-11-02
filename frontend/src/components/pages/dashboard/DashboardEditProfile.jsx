@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { createProfile } from 'store/profile-create/actions';
 
@@ -20,13 +20,14 @@ import {
   InstagramIcon,
 } from 'components/icons';
 
-const DashboardCreateProfile = ({
+const DashboardEditProfile = ({
   open,
   onClose,
   createProfile,
   errors,
   success,
   loading,
+  userProfile,
 }) => {
   const [formData, setFormData] = useState({
     company: '',
@@ -58,17 +59,37 @@ const DashboardCreateProfile = ({
     instagram,
   } = formData;
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (userProfile)
+        setFormData({
+          company: userProfile?.company,
+          website: userProfile?.website,
+          location: userProfile?.location,
+          status: userProfile?.status,
+          skills: userProfile?.skills,
+          githubusername: userProfile?.githubusername,
+          bio: userProfile?.bio,
+          twitter: userProfile?.twitter,
+          facebook: userProfile?.facebook,
+          linkedin: userProfile?.linkedin,
+          youtube: userProfile?.youtube,
+          instagram: userProfile?.instagram,
+        });
+    }, 1000);
+  }, [userProfile]);
+
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.id]: e.target.value });
 
-  const onCreateProfile = (formData) => {
+  const onUpdateProfile = (formData) => {
     createProfile(formData);
     if (success) onClose();
   };
 
   return (
     <Dialog open={open} onClose={onClose} aria-labelledby='form-dialog-title'>
-      <DialogTitle id='form-dialog-title'>Create Profile</DialogTitle>
+      <DialogTitle id='form-dialog-title'>Edit Profile</DialogTitle>
       <DialogContent>
         <DialogContentText>
           Here you can describe yourself in order to create your professional
@@ -85,7 +106,6 @@ const DashboardCreateProfile = ({
           <Loader />
         ) : (
           <>
-            {' '}
             <TextField
               autoFocus
               margin='dense'
@@ -259,7 +279,7 @@ const DashboardCreateProfile = ({
           Close
         </Button>
         {!success && (
-          <Button onClick={() => onCreateProfile(formData)} color='primary'>
+          <Button onClick={() => onUpdateProfile(formData)} color='primary'>
             Submit
           </Button>
         )}
@@ -281,4 +301,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DashboardCreateProfile);
+)(DashboardEditProfile);

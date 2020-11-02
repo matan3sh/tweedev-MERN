@@ -2,11 +2,11 @@ import React from 'react';
 
 import { GitHubIcon } from 'components/icons';
 
-const ProfileFooter = ({ repos }) => {
+const ProfileFooter = ({ repos, githubusername }) => {
   return (
     <div className='profileFooter'>
       <h3>
-        <GitHubIcon /> Github Repos
+        <GitHubIcon /> {githubusername} Repos
       </h3>
       {repos?.map((repo) => (
         <div className='profileFooter__card' key={repo.id}>

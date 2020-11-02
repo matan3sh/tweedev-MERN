@@ -48,6 +48,6 @@ export const setError = (error) => (dispatch) => {
   dispatch({ type: 'SET_ERROR', payload: error });
 };
 
-export const clearError = () => (dispatch) => {
+export const clearAuthError = () => (dispatch) => {
   dispatch({ type: 'CLEAR_ERROR' });
 };

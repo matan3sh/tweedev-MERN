@@ -9,6 +9,7 @@ import DashboardHeader from './DashboardHeader';
 import DashboardExpList from './DashboardExpList';
 import DashboardEduList from './DashboardEduList';
 import DashboardCreateProfile from './DashboardCreateProfile';
+import DashboardEditProfile from './DashboardEditProfile';
 
 const Dashboard = ({
   getProfile,
@@ -16,36 +17,51 @@ const Dashboard = ({
   clearProfile,
   loading,
   errors,
+  success,
 }) => {
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openCreateDialog, setOpenCreateDialog] = useState(false);
+  const [openEditDialog, setOpenEditDialog] = useState(false);
 
   useEffect(() => {
     getProfile();
     return () => {
       clearProfile();
     };
-  }, [getProfile, clearProfile]);
+  }, [getProfile, clearProfile, success]);
 
-  const onOpenDialog = () => setOpenDialog(true);
-  const onCloseDialog = () => setOpenDialog(false);
+  const onOpenCreateDialog = () => setOpenCreateDialog(true);
+  const onCloseCreateDialog = () => setOpenCreateDialog(false);
+  const onOpenEditDialog = () => setOpenEditDialog(true);
+  const onCloseEditDialog = () => setOpenEditDialog(false);
 
   return (
     <>
-      <DashboardCreateProfile open={openDialog} onClose={onCloseDialog} />
+      <DashboardCreateProfile
+        open={openCreateDialog}
+        onClose={onCloseCreateDialog}
+      />
+      <DashboardEditProfile
+        open={openEditDialog}
+        onClose={onCloseEditDialog}
+        userProfile={userProfile}
+      />
       <PageHeader title='Dashboard' icon={<AccountBalanceWalletIcon />} />
       {errors && <Error errors={errors} />}
       {loading ? (
         <Loader />
       ) : (
         <div className='dashboard'>
-          <DashboardHeader username={userProfile?.user?.name} />
+          <DashboardHeader
+            username={userProfile?.user?.name}
+            onOpenEditDialog={onOpenEditDialog}
+          />
           {userProfile === null && (
             <>
               <Info msg='Please create a profile' />
               <Button
                 variant='outlined'
                 className='dashboard__createProfile-btn'
-                onClick={onOpenDialog}
+                onClick={onOpenCreateDialog}
               >
                 Create Profile
               </Button>
@@ -73,6 +89,7 @@ const mapStateToProps = (state) => ({
   userProfile: state.profile.userProfile,
   loading: state.profile.loading,
   errors: state.profile.error,
+  success: state.profileCreate.success,
 });
 
 const mapDispatchToProps = {

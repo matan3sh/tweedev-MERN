@@ -90,6 +90,9 @@
     align-items: center;
     transition: all 0.3s ease-in;
   }
+  .sidebar__option {
+    justify-content: center;
+  }
   .sidebar__option h3 {
     display: none;
   }

@@ -5,11 +5,13 @@ import thunk from 'redux-thunk';
 import userAuthReducer from './user-auth/reducer';
 import profileReducer from './profile/reducer';
 import githubReducer from './github-repos/reducer';
+import profileCreateReducer from './profile-create/reducer';
 
 const rootReducer = combineReducers({
   userAuth: userAuthReducer,
   profile: profileReducer,
   github: githubReducer,
+  profileCreate: profileCreateReducer,
 });
 
 const store = createStore(

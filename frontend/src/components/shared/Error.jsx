@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { clearError } from 'store/user-auth/actions';
+import { clearAuthError } from 'store/user-auth/actions';
+import { clearCreateProfileError } from 'store/profile-create/actions';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Alert, AlertTitle } from '@material-ui/lab';
@@ -14,16 +15,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Error = ({ errors, clearError }) => {
+const Error = ({ errors, clearAuthError, clearCreateProfileError }) => {
   const classes = useStyles();
 
   useEffect(() => {
     if (errors !== null) {
       setTimeout(() => {
-        clearError();
+        clearAuthError();
+        clearCreateProfileError();
       }, 5000);
     }
-  }, [errors, clearError]);
+  }, [errors, clearAuthError, clearCreateProfileError]);
 
   const getErrors = () => {
     return errors?.map((error, index) => (
@@ -38,7 +40,8 @@ const Error = ({ errors, clearError }) => {
 };
 
 const mapDispatchToProps = {
-  clearError,
+  clearAuthError,
+  clearCreateProfileError,
 };
 
 export default connect(null, mapDispatchToProps)(Error);

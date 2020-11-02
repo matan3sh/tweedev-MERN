@@ -7,17 +7,24 @@ import {
   CastForEducationIcon,
 } from 'components/icons';
 
-const DashboardHeader = ({ username }) => {
+const DashboardHeader = ({ username, onOpenEditDialog }) => {
   return (
     <div className='dashboard__header'>
       <h3>
         Welcome <span>{username}</span>
       </h3>
-      <div className='dashboard__buttons'>
-        <Button startIcon={<PermContactCalendarIcon />}>Edit Profile</Button>
-        <Button startIcon={<BusinessCenterIcon />}>Add Experience</Button>
-        <Button startIcon={<CastForEducationIcon />}>Add Education</Button>
-      </div>
+      {username && (
+        <div className='dashboard__buttons'>
+          <Button
+            startIcon={<PermContactCalendarIcon />}
+            onClick={() => onOpenEditDialog()}
+          >
+            Edit Profile
+          </Button>
+          <Button startIcon={<BusinessCenterIcon />}>Add Experience</Button>
+          <Button startIcon={<CastForEducationIcon />}>Add Education</Button>
+        </div>
+      )}
     </div>
   );
 };

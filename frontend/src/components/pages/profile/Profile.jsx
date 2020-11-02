@@ -64,7 +64,10 @@ const Profile = ({
           ) : reposLoading ? (
             <Loader />
           ) : (
-            <ProfileFooter repos={repos} />
+            <ProfileFooter
+              repos={repos}
+              githubusername={userProfile?.githubusername}
+            />
           )}
         </div>
       )}
