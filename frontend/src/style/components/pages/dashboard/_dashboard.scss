@@ -64,8 +64,20 @@
     box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 2px !important;
     border-radius: 10px;
     border: 1px #ccc dotted;
+    width: 280px;
+    h3 {
+      margin-bottom: 5px;
+    }
+    h5 {
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+    small {
+      color: #a0a0a0;
+    }
     div {
       margin: 10px 0;
+      text-align: center;
     }
   }
 }

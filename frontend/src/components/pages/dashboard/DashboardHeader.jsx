@@ -7,7 +7,11 @@ import {
   CastForEducationIcon,
 } from 'components/icons';
 
-const DashboardHeader = ({ username, onOpenEditDialog }) => {
+const DashboardHeader = ({
+  username,
+  onOpenEditDialog,
+  onOpenAddExpDialog,
+}) => {
   return (
     <div className='dashboard__header'>
       <h3>
@@ -21,7 +25,12 @@ const DashboardHeader = ({ username, onOpenEditDialog }) => {
           >
             Edit Profile
           </Button>
-          <Button startIcon={<BusinessCenterIcon />}>Add Experience</Button>
+          <Button
+            startIcon={<BusinessCenterIcon />}
+            onClick={() => onOpenAddExpDialog()}
+          >
+            Add Experience
+          </Button>
           <Button startIcon={<CastForEducationIcon />}>Add Education</Button>
         </div>
       )}

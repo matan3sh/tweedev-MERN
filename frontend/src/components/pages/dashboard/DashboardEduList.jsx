@@ -13,7 +13,6 @@ const DashboardEduList = ({ education }) => {
           <h5>
             {edu.degree}, {edu.fieldofstudy}
           </h5>
-
           <small>
             <Moment format='LL'>{edu.from}</Moment> -
             {edu.current ? (

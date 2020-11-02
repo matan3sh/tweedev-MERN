@@ -10,6 +10,7 @@ import DashboardExpList from './DashboardExpList';
 import DashboardEduList from './DashboardEduList';
 import DashboardCreateProfile from './DashboardCreateProfile';
 import DashboardEditProfile from './DashboardEditProfile';
+import DashboardAddExp from './DashboardAddExp';
 
 const Dashboard = ({
   getProfile,
@@ -18,21 +19,25 @@ const Dashboard = ({
   loading,
   errors,
   success,
+  addExpSuccess,
 }) => {
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
+  const [openAddExpDialog, setOpenAddExpDialog] = useState(false);
 
   useEffect(() => {
     getProfile();
     return () => {
       clearProfile();
     };
-  }, [getProfile, clearProfile, success]);
+  }, [getProfile, clearProfile, success, addExpSuccess]);
 
   const onOpenCreateDialog = () => setOpenCreateDialog(true);
   const onCloseCreateDialog = () => setOpenCreateDialog(false);
   const onOpenEditDialog = () => setOpenEditDialog(true);
   const onCloseEditDialog = () => setOpenEditDialog(false);
+  const onOpenAddExpDialog = () => setOpenAddExpDialog(true);
+  const onCloseAddExpDialog = () => setOpenAddExpDialog(false);
 
   return (
     <>
@@ -45,6 +50,7 @@ const Dashboard = ({
         onClose={onCloseEditDialog}
         userProfile={userProfile}
       />
+      <DashboardAddExp open={openAddExpDialog} onClose={onCloseAddExpDialog} />
       <PageHeader title='Dashboard' icon={<AccountBalanceWalletIcon />} />
       {errors && <Error errors={errors} />}
       {loading ? (
@@ -54,6 +60,7 @@ const Dashboard = ({
           <DashboardHeader
             username={userProfile?.user?.name}
             onOpenEditDialog={onOpenEditDialog}
+            onOpenAddExpDialog={onOpenAddExpDialog}
           />
           {userProfile === null && (
             <>
@@ -90,6 +97,7 @@ const mapStateToProps = (state) => ({
   loading: state.profile.loading,
   errors: state.profile.error,
   success: state.profileCreate.success,
+  addExpSuccess: state.addExp.success,
 });
 
 const mapDispatchToProps = {
