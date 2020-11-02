@@ -59,7 +59,7 @@ const Dashboard = ({
           )}
           <h2>Education</h2>
           {!userProfile?.education.length ? (
-            <p>You have no experience</p>
+            <p>You have no education</p>
           ) : (
             <DashboardEduList education={userProfile?.education} />
           )}

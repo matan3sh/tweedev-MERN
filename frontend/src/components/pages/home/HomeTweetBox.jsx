@@ -18,6 +18,7 @@ const HomeTweetBox = ({ userInfo }) => {
             <input
               value={tweet}
               type='text'
+              onChange={(e) => console.log(e.target.value)}
               placeholder='Must Login to Tweet'
             />
           </div>

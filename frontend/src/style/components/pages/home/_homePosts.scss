@@ -52,3 +52,9 @@
   margin-top: 0.5rem;
   display: flex;
 }
+
+@media screen and (max-width: 720px) {
+  .posts {
+    margin-bottom: 50px;
+  }
+}

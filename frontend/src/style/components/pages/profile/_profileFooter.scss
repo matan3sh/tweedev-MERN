@@ -1,6 +1,8 @@
 .profileFooter {
   padding: 20px;
   border-top: 1px $hover-color solid;
+  max-height: 500px;
+  overflow-y: scroll;
   h3 {
     display: flex;
     align-items: center;
@@ -50,6 +52,14 @@
   color: #000;
 }
 
+.profileFooter::-webkit-scrollbar {
+  display: none;
+}
+.profileFooter {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 @media screen and (max-width: 1070px) {
   .profileFooter {
     .profileFooter__card {
@@ -67,5 +77,11 @@
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .profileFooter {
+    margin-bottom: 30px;
   }
 }

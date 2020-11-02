@@ -104,15 +104,8 @@
   }
 }
 
-@media screen and (max-width: 475px) {
+@media screen and (max-width: 720px) {
   .sidebar {
-    min-width: 67px;
-    max-width: 67px;
-  }
-  .sidebar__twitterIcon {
-    font-size: 50px !important;
-  }
-  .sidebar__option .MuiSvgIcon-root {
-    font-size: 24px !important;
+    display: none;
   }
 }

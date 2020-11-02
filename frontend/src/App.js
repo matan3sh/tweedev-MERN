@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { GuestRoute, ProtectedRoute } from 'routes';
 
-import Sidebar from 'components/layout/Sidebar';
+import { BottomNav, Sidebar } from 'components/layout';
 import {
   Login,
   Register,
@@ -28,6 +28,7 @@ const App = () => {
           </Switch>
         </div>
       </div>
+      <BottomNav />
     </Router>
   );
 };

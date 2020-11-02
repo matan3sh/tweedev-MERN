@@ -37,7 +37,7 @@ const Profile = ({
 
   return (
     <>
-      <PageHeader title='Profile' icon={<AssignmentIndIcon />} />
+      <PageHeader title='My Profile' icon={<AssignmentIndIcon />} />
       {errors && <Error errors={errors} />}
       {userProfile === null && !loading ? (
         <Info msg='There is no profile for this user' />
