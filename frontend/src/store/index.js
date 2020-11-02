@@ -7,6 +7,7 @@ import profileReducer from './profile/reducer';
 import githubReducer from './github-repos/reducer';
 import profileCreateReducer from './profile-create/reducer';
 import addExpReducer from './add-experience/reducer';
+import addEduReducer from './add-education/reducer';
 
 const rootReducer = combineReducers({
   userAuth: userAuthReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   github: githubReducer,
   profileCreate: profileCreateReducer,
   addExp: addExpReducer,
+  addEdu: addEduReducer,
 });
 
 const store = createStore(

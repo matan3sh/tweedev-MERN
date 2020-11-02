@@ -11,6 +11,7 @@ const DashboardHeader = ({
   username,
   onOpenEditDialog,
   onOpenAddExpDialog,
+  onOpenAddEduDialog,
 }) => {
   return (
     <div className='dashboard__header'>
@@ -31,7 +32,12 @@ const DashboardHeader = ({
           >
             Add Experience
           </Button>
-          <Button startIcon={<CastForEducationIcon />}>Add Education</Button>
+          <Button
+            startIcon={<CastForEducationIcon />}
+            onClick={() => onOpenAddEduDialog()}
+          >
+            Add Education
+          </Button>
         </div>
       )}
     </div>

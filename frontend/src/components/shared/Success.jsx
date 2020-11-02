@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { clearCreateProfileSuccess } from 'store/profile-create/actions';
 import { clearAddExpSuccess } from 'store/add-experience/actions';
+import { clearAddEduSuccess } from 'store/add-education/actions';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
@@ -15,15 +16,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Success = ({ msg, clearCreateProfileSuccess, clearAddExpSuccess }) => {
+const Success = ({
+  msg,
+  clearCreateProfileSuccess,
+  clearAddExpSuccess,
+  clearAddEduSuccess,
+}) => {
   const classes = useStyles();
 
   useEffect(() => {
     setTimeout(() => {
       clearCreateProfileSuccess();
       clearAddExpSuccess();
+      clearAddEduSuccess();
     }, 5000);
-  }, [clearCreateProfileSuccess, clearAddExpSuccess]);
+  }, [clearCreateProfileSuccess, clearAddExpSuccess, clearAddEduSuccess]);
 
   return (
     <div className={classes.root}>
@@ -35,6 +42,7 @@ const Success = ({ msg, clearCreateProfileSuccess, clearAddExpSuccess }) => {
 const mapDispatchToProps = {
   clearCreateProfileSuccess,
   clearAddExpSuccess,
+  clearAddEduSuccess,
 };
 
 export default connect(null, mapDispatchToProps)(Success);

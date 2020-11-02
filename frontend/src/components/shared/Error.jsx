@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { clearAuthError } from 'store/user-auth/actions';
 import { clearCreateProfileError } from 'store/profile-create/actions';
 import { clearAddExpError } from 'store/add-experience/actions';
+import { clearAddEduError } from 'store/add-education/actions';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Alert, AlertTitle } from '@material-ui/lab';
@@ -21,6 +22,7 @@ const Error = ({
   clearAuthError,
   clearCreateProfileError,
   clearAddExpError,
+  clearAddEduError,
 }) => {
   const classes = useStyles();
 
@@ -30,9 +32,16 @@ const Error = ({
         clearAuthError();
         clearCreateProfileError();
         clearAddExpError();
+        clearAddEduError();
       }, 5000);
     }
-  }, [errors, clearAuthError, clearCreateProfileError, clearAddExpError]);
+  }, [
+    errors,
+    clearAuthError,
+    clearCreateProfileError,
+    clearAddExpError,
+    clearAddEduError,
+  ]);
 
   const getErrors = () => {
     return errors?.map((error, index) => (
@@ -50,6 +59,7 @@ const mapDispatchToProps = {
   clearAuthError,
   clearCreateProfileError,
   clearAddExpError,
+  clearAddEduError,
 };
 
 export default connect(null, mapDispatchToProps)(Error);

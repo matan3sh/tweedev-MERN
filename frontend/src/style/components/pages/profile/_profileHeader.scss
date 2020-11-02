@@ -70,9 +70,11 @@
     flex-direction: column;
     .profileHeader__left {
       border-right: none;
+      margin: 5px;
     }
     .profileHeader__right {
       text-align: center;
+      margin-top: 16px;
     }
   }
 }

@@ -11,6 +11,7 @@ import DashboardEduList from './DashboardEduList';
 import DashboardCreateProfile from './DashboardCreateProfile';
 import DashboardEditProfile from './DashboardEditProfile';
 import DashboardAddExp from './DashboardAddExp';
+import DashboardAddEdu from './DashboardAddEdu';
 
 const Dashboard = ({
   getProfile,
@@ -20,17 +21,19 @@ const Dashboard = ({
   errors,
   success,
   addExpSuccess,
+  addEduSuccess,
 }) => {
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
   const [openAddExpDialog, setOpenAddExpDialog] = useState(false);
+  const [openAddEduDialog, setOpenAddEduDialog] = useState(false);
 
   useEffect(() => {
     getProfile();
     return () => {
       clearProfile();
     };
-  }, [getProfile, clearProfile, success, addExpSuccess]);
+  }, [getProfile, clearProfile, success, addExpSuccess, addEduSuccess]);
 
   const onOpenCreateDialog = () => setOpenCreateDialog(true);
   const onCloseCreateDialog = () => setOpenCreateDialog(false);
@@ -38,6 +41,8 @@ const Dashboard = ({
   const onCloseEditDialog = () => setOpenEditDialog(false);
   const onOpenAddExpDialog = () => setOpenAddExpDialog(true);
   const onCloseAddExpDialog = () => setOpenAddExpDialog(false);
+  const onOpenAddEduDialog = () => setOpenAddEduDialog(true);
+  const onCloseAddEduDialog = () => setOpenAddEduDialog(false);
 
   return (
     <>
@@ -51,6 +56,7 @@ const Dashboard = ({
         userProfile={userProfile}
       />
       <DashboardAddExp open={openAddExpDialog} onClose={onCloseAddExpDialog} />
+      <DashboardAddEdu open={openAddEduDialog} onClose={onCloseAddEduDialog} />
       <PageHeader title='Dashboard' icon={<AccountBalanceWalletIcon />} />
       {errors && <Error errors={errors} />}
       {loading ? (
@@ -61,6 +67,7 @@ const Dashboard = ({
             username={userProfile?.user?.name}
             onOpenEditDialog={onOpenEditDialog}
             onOpenAddExpDialog={onOpenAddExpDialog}
+            onOpenAddEduDialog={onOpenAddEduDialog}
           />
           {userProfile === null && (
             <>
@@ -98,6 +105,7 @@ const mapStateToProps = (state) => ({
   errors: state.profile.error,
   success: state.profileCreate.success,
   addExpSuccess: state.addExp.success,
+  addEduSuccess: state.addEdu.success,
 });
 
 const mapDispatchToProps = {
