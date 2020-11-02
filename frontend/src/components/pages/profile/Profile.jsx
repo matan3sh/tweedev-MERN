@@ -33,7 +33,7 @@ const Profile = ({
     return () => {
       clearRepos();
     };
-  }, [userProfile]);
+  }, [userProfile, clearRepos, getRepos]);
 
   return (
     <>

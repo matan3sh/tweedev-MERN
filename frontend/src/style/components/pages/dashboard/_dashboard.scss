@@ -2,8 +2,16 @@
   padding: 20px;
   h2 {
     margin: 20px auto;
+    margin-bottom: 10px;
     font-size: 20px;
     text-align: center;
+  }
+  p {
+    text-align: center;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 14px;
   }
 }
 .dashboard__header {
