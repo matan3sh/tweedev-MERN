@@ -60,11 +60,11 @@ const BottomNav = ({ userInfo, logout }) => {
         <HomeIcon /> <h3>Home</h3>
       </NavLink>
       <NavLink
-        to='/users'
+        to='/developers'
         activeClassName='navBottom__active'
         className='navBottom__link'
       >
-        <SupervisedUserCircleIcon /> <h3>Users</h3>
+        <SupervisedUserCircleIcon /> <h3>Developers</h3>
       </NavLink>
       <NavLink
         to='/login'

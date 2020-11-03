@@ -12,6 +12,7 @@ import deleteExpReducer from './delete-experience/reducer';
 import deleteEduReducer from './delete-education/reducer';
 import deleteProfileReducer from './delete-profile/reducer';
 import profilesReducer from './get-profiles/reducer';
+import devProfileReducer from './get-dev-profile/reducer';
 
 const rootReducer = combineReducers({
   userAuth: userAuthReducer,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   deleteEdu: deleteEduReducer,
   deleteProfile: deleteProfileReducer,
   profiles: profilesReducer,
+  devProfile: devProfileReducer,
 });
 
 const store = createStore(

@@ -4,8 +4,10 @@
   padding: 20px;
   p {
     margin-bottom: 20px;
-    text-align: center;
     color: #777;
+  }
+  .profileBody__empty {
+    text-align: center;
   }
   .profileBody__left {
     border-right: 1px $hover-color solid;

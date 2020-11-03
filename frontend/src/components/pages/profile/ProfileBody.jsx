@@ -6,13 +6,13 @@ import ProfileExp from './ProfileExp';
 const ProfileBody = ({ experience, education }) => {
   return (
     <div className='profileBody'>
-      {!experience.length ? (
-        <p>No Experience Entered</p>
+      {!experience?.length ? (
+        <p className='profileBody__empty'>No Experience Entered</p>
       ) : (
         <ProfileExp experience={experience} />
       )}
-      {!education.length ? (
-        <p>No Education Entered</p>
+      {!education?.length ? (
+        <p className='profileBody__empty'>No Education Entered</p>
       ) : (
         <ProfileEdu education={education} />
       )}

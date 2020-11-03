@@ -74,11 +74,11 @@ const Sidebar = ({ userInfo, logout }) => {
         <HomeIcon /> <h3>Home</h3>
       </NavLink>
       <NavLink
-        to='/users'
+        to='/developers'
         activeClassName='sidebar__option-active'
         className='sidebar__option'
       >
-        <SupervisedUserCircleIcon /> <h3>Users</h3>
+        <SupervisedUserCircleIcon /> <h3>Developers</h3>
       </NavLink>
       <NavLink
         to='/login'

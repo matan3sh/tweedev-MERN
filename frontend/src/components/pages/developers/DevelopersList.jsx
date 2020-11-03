@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { LanguageIcon, GitHubIcon } from 'components/icons';
 
@@ -8,14 +9,18 @@ const DevelopersList = ({ developers }) => {
       {developers?.map((developer) => (
         <div className='developer__card' key={developer._id}>
           <div className='developer__card-left'>
-            <img src={developer.user.avatar} alt={developer.user.name} />
+            <Link to={`/developers/${developer.user._id}`}>
+              <img src={developer.user.avatar} alt={developer.user.name} />
+            </Link>
           </div>
           <div className='developer__card-right'>
-            <h3>{developer.user.name}</h3>
-            <h5>
-              {developer.status} @ {developer.company}
-            </h5>
-            <small>{developer.location}</small>
+            <Link to={`/developers/${developer.user._id}`}>
+              <h3>{developer.user.name}</h3>
+              <h5>
+                {developer.status} @ {developer.company}
+              </h5>
+              <small>{developer.location}</small>
+            </Link>
             <div>
               {developer.website && (
                 <a

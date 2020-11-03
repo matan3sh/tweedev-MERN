@@ -10,6 +10,7 @@ import {
   Developers,
   Profile,
   Dashboard,
+  DeveloperProfile,
 } from 'components/pages';
 
 const App = () => {
@@ -22,6 +23,11 @@ const App = () => {
             <ProtectedRoute exact path='/dashboard' component={Dashboard} />
             <ProtectedRoute exact path='/profile' component={Profile} />
             <Route exact path='/developers' component={Developers} />
+            <Route
+              exact
+              path='/developers/:profileId'
+              component={DeveloperProfile}
+            />
             <GuestRoute exact path='/login' component={Login} />
             <GuestRoute exact path='/register' component={Register} />
             <Route exact path='/' component={Home} />
