@@ -20,7 +20,7 @@ const ProfileHeader = ({ userProfile }) => {
         </h5>
         <h6>{userProfile?.location}</h6>
         <div className='profileHeader__left-icons'>
-          {userProfile?.social.youtube && (
+          {userProfile?.social?.youtube && (
             <a
               href={userProfile.social.youtube}
               target='_blank'
@@ -29,7 +29,7 @@ const ProfileHeader = ({ userProfile }) => {
               <YouTubeIcon />
             </a>
           )}
-          {userProfile?.social.twitter && (
+          {userProfile?.social?.twitter && (
             <a
               href={userProfile.social.twitter}
               target='_blank'
@@ -38,7 +38,7 @@ const ProfileHeader = ({ userProfile }) => {
               <TwitterIcon />
             </a>
           )}
-          {userProfile?.social.facebook && (
+          {userProfile?.social?.facebook && (
             <a
               href={userProfile.social.facebook}
               target='_blank'
@@ -47,7 +47,7 @@ const ProfileHeader = ({ userProfile }) => {
               <FacebookIcon />
             </a>
           )}
-          {userProfile?.social.linkedin && (
+          {userProfile?.social?.linkedin && (
             <a
               href={userProfile.social.linkedin}
               target='_blank'
@@ -56,7 +56,7 @@ const ProfileHeader = ({ userProfile }) => {
               <LinkedInIcon />
             </a>
           )}
-          {userProfile?.social.instagram && (
+          {userProfile?.social?.instagram && (
             <a
               href={userProfile.social.instagram}
               target='_blank'
