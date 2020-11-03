@@ -42,7 +42,7 @@ const Sidebar = ({ userInfo, logout }) => {
           activeClassName='sidebar__option-active'
           className='sidebar__option'
         >
-          <SupervisedUserCircleIcon /> <h3>Users</h3>
+          <SupervisedUserCircleIcon /> <h3>Developers</h3>
         </NavLink>
         <NavLink
           to='/dashboard'

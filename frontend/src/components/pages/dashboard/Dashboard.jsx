@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { getProfile, clearProfile } from 'store/profile/actions';
+import { getProfile, clearProfile } from 'store/get-profile/actions';
 
 import Button from '@material-ui/core/Button';
 import {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getProfile, clearProfile } from 'store/profile/actions';
+import { getProfile, clearProfile } from 'store/get-profile/actions';
 import { getRepos, clearRepos } from 'store/github-repos/actions';
 
 import { Loader, PageHeader, Error, Info } from 'components/shared';

@@ -25,9 +25,9 @@ const DashboardEduList = ({ education, loading, deleteEdu }) => {
             )}
           </small>
           <div>
-            <IconButton component='span'>
+            {/* <IconButton component='span'>
               <EditIcon />
-            </IconButton>
+            </IconButton> */}
             {loading ? (
               <Loader />
             ) : (

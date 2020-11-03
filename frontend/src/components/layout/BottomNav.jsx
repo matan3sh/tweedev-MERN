@@ -35,7 +35,7 @@ const BottomNav = ({ userInfo, logout }) => {
         activeClassName='navBottom__active'
         className='navBottom__link'
       >
-        <SupervisedUserCircleIcon /> <h3>Users</h3>
+        <SupervisedUserCircleIcon /> <h3>Developers</h3>
       </NavLink>
       <NavLink
         to='/dashboard'

@@ -23,9 +23,9 @@ const DashboardExpList = ({ experience, deleteExp, loading }) => {
             )}
           </small>
           <div>
-            <IconButton component='span'>
+            {/* <IconButton component='span'>
               <EditIcon />
-            </IconButton>
+            </IconButton> */}
             {loading ? (
               <Loader />
             ) : (
