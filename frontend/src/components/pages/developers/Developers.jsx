@@ -14,10 +14,7 @@ const Developers = ({ getProfiles, errors, loading, developers }) => {
   return (
     <>
       {errors && <Error errors={errors} />}
-      <PageHeader
-        title='Developers Profiles'
-        icon={<MarkunreadMailboxIcon />}
-      />
+      <PageHeader title='Developers' icon={<MarkunreadMailboxIcon />} />
       {loading ? <Loader /> : <DevelopersList developers={developers} />}
     </>
   );

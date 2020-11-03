@@ -1,15 +1,17 @@
 .profileFooter {
   border-top: 1px $hover-color solid;
-  max-height: 500px;
-  overflow-y: scroll;
+  .profileFooter__list {
+    max-height: 500px;
+    overflow-y: scroll;
+  }
   h3 {
     display: flex;
     align-items: center;
-    color: #fff;
+    color: $main-color;
     font-family: Tahoma-Bold;
-    background-color: $main-color;
+    background-color: #fff;
+    border: 2px $main-color solid;
     padding: 10px;
-    border-radius: 8px;
 
     svg {
       margin-right: 10px;
