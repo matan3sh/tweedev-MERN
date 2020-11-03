@@ -7,7 +7,7 @@ import {
   Login,
   Register,
   Home,
-  Users,
+  Developers,
   Profile,
   Dashboard,
 } from 'components/pages';
@@ -21,7 +21,7 @@ const App = () => {
           <Switch>
             <ProtectedRoute exact path='/dashboard' component={Dashboard} />
             <ProtectedRoute exact path='/profile' component={Profile} />
-            <Route exact path='/users' component={Users} />
+            <Route exact path='/developers' component={Developers} />
             <GuestRoute exact path='/login' component={Login} />
             <GuestRoute exact path='/register' component={Register} />
             <Route exact path='/' component={Home} />

@@ -38,7 +38,7 @@ const Sidebar = ({ userInfo, logout }) => {
           <PersonIcon /> <h3>Profile</h3>
         </NavLink>
         <NavLink
-          to='/users'
+          to='/developers'
           activeClassName='sidebar__option-active'
           className='sidebar__option'
         >

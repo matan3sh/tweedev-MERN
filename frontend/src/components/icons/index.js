@@ -31,3 +31,4 @@ export { default as CastForEducationIcon } from '@material-ui/icons/CastForEduca
 export { default as DeleteIcon } from '@material-ui/icons/Delete';
 export { default as EditIcon } from '@material-ui/icons/Edit';
 export { default as ErrorIcon } from '@material-ui/icons/Error';
+export { default as LanguageIcon } from '@material-ui/icons/Language';

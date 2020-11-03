@@ -31,7 +31,7 @@ const BottomNav = ({ userInfo, logout }) => {
         <PersonIcon /> <h3>Profile</h3>
       </NavLink>
       <NavLink
-        to='/users'
+        to='/developers'
         activeClassName='navBottom__active'
         className='navBottom__link'
       >
