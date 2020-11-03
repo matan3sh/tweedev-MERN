@@ -7,13 +7,7 @@ import { IconButton } from '@material-ui/core';
 import { DeleteIcon, EditIcon } from 'components/icons';
 import { Loader } from 'components/shared';
 
-const DashboardExpList = ({
-  experience,
-  deleteExp,
-  success,
-  loading,
-  error,
-}) => {
+const DashboardExpList = ({ experience, deleteExp, loading }) => {
   return (
     <div className='dashboardList'>
       {experience?.map((exp) => (
@@ -47,9 +41,7 @@ const DashboardExpList = ({
 };
 
 const mapStateToProps = (state) => ({
-  success: state.deleteExp.success,
   loading: state.deleteExp.loading,
-  errors: state.deleteExp.error,
 });
 
 const mapDispatchToProps = {

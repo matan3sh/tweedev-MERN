@@ -9,6 +9,7 @@ import profileCreateReducer from './create-profile/reducer';
 import addExpReducer from './add-experience/reducer';
 import addEduReducer from './add-education/reducer';
 import deleteExpReducer from './delete-experience/reducer';
+import deleteEduReducer from './delete-education/reducer';
 
 const rootReducer = combineReducers({
   userAuth: userAuthReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   addExp: addExpReducer,
   addEdu: addEduReducer,
   deleteExp: deleteExpReducer,
+  deleteEdu: deleteEduReducer,
 });
 
 const store = createStore(

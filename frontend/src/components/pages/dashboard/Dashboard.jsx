@@ -29,6 +29,7 @@ const Dashboard = ({
   addExpSuccess,
   addEduSuccess,
   deleteExpSuccess,
+  deleteEduSuccess,
 }) => {
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
@@ -47,6 +48,7 @@ const Dashboard = ({
     addExpSuccess,
     addEduSuccess,
     deleteExpSuccess,
+    deleteEduSuccess,
   ]);
 
   const onOpenCreateDialog = () => setOpenCreateDialog(true);
@@ -109,7 +111,12 @@ const Dashboard = ({
           )}
         </div>
       )}
-      {deleteExpSuccess && <SuccessSnackBar msg='Exp Deleted Successfully' />}
+      {deleteExpSuccess && (
+        <SuccessSnackBar msg='Experience Deleted Successfully' />
+      )}
+      {deleteEduSuccess && (
+        <SuccessSnackBar msg='Education Deleted Successfully' />
+      )}
     </>
   );
 };
@@ -122,6 +129,7 @@ const mapStateToProps = (state) => ({
   addExpSuccess: state.addExp.success,
   addEduSuccess: state.addEdu.success,
   deleteExpSuccess: state.deleteExp.success,
+  deleteEduSuccess: state.deleteEdu.success,
 });
 
 const mapDispatchToProps = {

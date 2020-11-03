@@ -1,10 +1,13 @@
 import React from 'react';
-import Moment from 'react-moment';
+import { connect } from 'react-redux';
+import { deleteEdu } from 'store/delete-education/actions';
 
+import Moment from 'react-moment';
 import { IconButton } from '@material-ui/core';
 import { DeleteIcon, EditIcon } from 'components/icons';
+import { Loader } from 'components/shared';
 
-const DashboardEduList = ({ education }) => {
+const DashboardEduList = ({ education, loading, deleteEdu }) => {
   return (
     <div className='dashboardList'>
       {education?.map((edu) => (
@@ -25,9 +28,13 @@ const DashboardEduList = ({ education }) => {
             <IconButton component='span'>
               <EditIcon />
             </IconButton>
-            <IconButton component='span'>
-              <DeleteIcon />
-            </IconButton>
+            {loading ? (
+              <Loader />
+            ) : (
+              <IconButton component='span' onClick={() => deleteEdu(edu._id)}>
+                <DeleteIcon />
+              </IconButton>
+            )}
           </div>
         </div>
       ))}
@@ -35,4 +42,12 @@ const DashboardEduList = ({ education }) => {
   );
 };
 
-export default DashboardEduList;
+const mapStateToProps = (state) => ({
+  loading: state.deleteEdu.loading,
+});
+
+const mapDispatchToProps = {
+  deleteEdu,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardEduList);

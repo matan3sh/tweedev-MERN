@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { clearDeleteExpSuccess } from 'store/delete-experience/actions';
+import { clearDeleteEduSuccess } from 'store/delete-education/actions';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
@@ -19,21 +20,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SuccessSnackBar = ({ msg, clearDeleteExpSuccess }) => {
+const SuccessSnackBar = ({
+  msg,
+  clearDeleteExpSuccess,
+  clearDeleteEduSuccess,
+}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       clearDeleteExpSuccess();
+      clearDeleteEduSuccess();
     }, 2500);
-  }, [clearDeleteExpSuccess]);
+  }, [clearDeleteExpSuccess, clearDeleteEduSuccess]);
 
   return (
     <div className={classes.root}>
       <Snackbar
         open={open}
-        autoHideDuration={6000}
+        autoHideDuration={2500}
         onClose={() => setOpen(false)}
       >
         <Alert onClose={() => setOpen(false)} severity='success'>
@@ -46,6 +52,7 @@ const SuccessSnackBar = ({ msg, clearDeleteExpSuccess }) => {
 
 const mapDispatchToProps = {
   clearDeleteExpSuccess,
+  clearDeleteEduSuccess,
 };
 
 export default connect(null, mapDispatchToProps)(SuccessSnackBar);
