@@ -23,10 +23,11 @@ export const deleteProfile = () => async (dispatch, getState) => {
   }
 };
 
-export const clearCreateProfileError = () => (dispatch) => {
+export const clearDeleteProfileError = () => (dispatch) => {
   dispatch({ type: 'PROFILE_DELETE_CLEAR_ERROR' });
 };
 
-export const clearCreateProfileSuccess = () => (dispatch) => {
+export const clearDeleteProfileSuccess = () => (dispatch) => {
+  console.log(123);
   dispatch({ type: 'PROFILE_DELETE_CLEAR_SUCCESS' });
 };

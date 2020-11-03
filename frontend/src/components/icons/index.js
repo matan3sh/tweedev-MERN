@@ -30,3 +30,4 @@ export { default as BusinessCenterIcon } from '@material-ui/icons/BusinessCenter
 export { default as CastForEducationIcon } from '@material-ui/icons/CastForEducation';
 export { default as DeleteIcon } from '@material-ui/icons/Delete';
 export { default as EditIcon } from '@material-ui/icons/Edit';
+export { default as ErrorIcon } from '@material-ui/icons/Error';

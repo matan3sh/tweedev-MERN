@@ -82,6 +82,15 @@
   }
 }
 
+.dashboard__deleteAccount-btn {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 30px auto !important;
+  background-color: #b2102f !important;
+  color: #fff !important;
+}
+
 .toggle__social-btn {
   margin-top: 1rem !important;
 }

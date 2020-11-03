@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { getProfile, clearProfile } from 'store/get-profile/actions';
+import {
+  deleteProfile,
+  clearDeleteProfileSuccess,
+} from 'store/delete-profile/actions';
+import { logout } from 'store/user-auth/actions';
 
 import Button from '@material-ui/core/Button';
 import {
@@ -10,7 +15,7 @@ import {
   Info,
   SuccessSnackBar,
 } from 'components/shared';
-import { AccountBalanceWalletIcon } from 'components/icons';
+import { AccountBalanceWalletIcon, ErrorIcon } from 'components/icons';
 import DashboardHeader from './DashboardHeader';
 import DashboardExpList from './DashboardExpList';
 import DashboardEduList from './DashboardEduList';
@@ -30,6 +35,10 @@ const Dashboard = ({
   addEduSuccess,
   deleteExpSuccess,
   deleteEduSuccess,
+  deleteProfileSuccess,
+  deleteProfile,
+  logout,
+  clearDeleteProfileSuccess,
 }) => {
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
@@ -49,7 +58,15 @@ const Dashboard = ({
     addEduSuccess,
     deleteExpSuccess,
     deleteEduSuccess,
+    clearDeleteProfileSuccess,
   ]);
+
+  useEffect(() => {
+    if (deleteProfileSuccess) {
+      logout();
+      clearDeleteProfileSuccess();
+    }
+  }, [deleteProfileSuccess, logout, clearDeleteProfileSuccess]);
 
   const onOpenCreateDialog = () => setOpenCreateDialog(true);
   const onCloseCreateDialog = () => setOpenCreateDialog(false);
@@ -59,6 +76,13 @@ const Dashboard = ({
   const onCloseAddExpDialog = () => setOpenAddExpDialog(false);
   const onOpenAddEduDialog = () => setOpenAddEduDialog(true);
   const onCloseAddEduDialog = () => setOpenAddEduDialog(false);
+
+  const onDeleteAccount = () => {
+    const isConfirm = window.confirm(
+      'Are you sure you want to delete this account?'
+    );
+    if (isConfirm) deleteProfile();
+  };
 
   return (
     <>
@@ -109,6 +133,14 @@ const Dashboard = ({
           ) : (
             <DashboardEduList education={userProfile?.education} />
           )}
+          <Button
+            startIcon={<ErrorIcon />}
+            onClick={onDeleteAccount}
+            className='dashboard__deleteAccount-btn'
+            variant='contained'
+          >
+            Delete Account
+          </Button>
         </div>
       )}
       {deleteExpSuccess && (
@@ -130,11 +162,15 @@ const mapStateToProps = (state) => ({
   addEduSuccess: state.addEdu.success,
   deleteExpSuccess: state.deleteExp.success,
   deleteEduSuccess: state.deleteEdu.success,
+  deleteProfileSuccess: state.deleteProfile.success,
 });
 
 const mapDispatchToProps = {
   getProfile,
   clearProfile,
+  deleteProfile,
+  logout,
+  clearDeleteProfileSuccess,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
