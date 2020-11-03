@@ -1,21 +1,25 @@
 .profileFooter {
-  padding: 20px;
   border-top: 1px $hover-color solid;
   max-height: 500px;
   overflow-y: scroll;
   h3 {
     display: flex;
     align-items: center;
-    color: $main-color;
+    color: #fff;
     font-family: Tahoma-Bold;
+    background-color: $main-color;
+    padding: 10px;
+    border-radius: 8px;
+
     svg {
       margin-right: 10px;
     }
   }
   .profileFooter__card {
+    padding: 20px;
+
     display: flex;
     justify-content: space-between;
-    margin-top: 1rem;
     .profileFooter__card-left {
       h4 {
         font-family: Tahoma-Bold;

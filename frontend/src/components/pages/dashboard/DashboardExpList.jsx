@@ -1,10 +1,19 @@
 import React from 'react';
-import Moment from 'react-moment';
+import { connect } from 'react-redux';
+import { deleteExp } from 'store/delete-experience/actions';
 
+import Moment from 'react-moment';
 import { IconButton } from '@material-ui/core';
 import { DeleteIcon, EditIcon } from 'components/icons';
+import { Loader } from 'components/shared';
 
-const DashboardExpList = ({ experience }) => {
+const DashboardExpList = ({
+  experience,
+  deleteExp,
+  success,
+  loading,
+  error,
+}) => {
   return (
     <div className='dashboardList'>
       {experience?.map((exp) => (
@@ -23,9 +32,13 @@ const DashboardExpList = ({ experience }) => {
             <IconButton component='span'>
               <EditIcon />
             </IconButton>
-            <IconButton component='span'>
-              <DeleteIcon />
-            </IconButton>
+            {loading ? (
+              <Loader />
+            ) : (
+              <IconButton component='span' onClick={() => deleteExp(exp._id)}>
+                <DeleteIcon />
+              </IconButton>
+            )}
           </div>
         </div>
       ))}
@@ -33,4 +46,14 @@ const DashboardExpList = ({ experience }) => {
   );
 };
 
-export default DashboardExpList;
+const mapStateToProps = (state) => ({
+  success: state.deleteExp.success,
+  loading: state.deleteExp.loading,
+  errors: state.deleteExp.error,
+});
+
+const mapDispatchToProps = {
+  deleteExp,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardExpList);

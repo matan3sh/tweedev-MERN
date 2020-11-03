@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { clearCreateProfileSuccess } from 'store/profile-create/actions';
+import { clearCreateProfileSuccess } from 'store/create-profile/actions';
 import { clearAddExpSuccess } from 'store/add-experience/actions';
 import { clearAddEduSuccess } from 'store/add-education/actions';
 

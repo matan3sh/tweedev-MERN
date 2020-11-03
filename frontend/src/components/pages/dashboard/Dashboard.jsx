@@ -3,7 +3,13 @@ import { connect } from 'react-redux';
 import { getProfile, clearProfile } from 'store/profile/actions';
 
 import Button from '@material-ui/core/Button';
-import { PageHeader, Error, Loader, Info } from 'components/shared';
+import {
+  PageHeader,
+  Error,
+  Loader,
+  Info,
+  SuccessSnackBar,
+} from 'components/shared';
 import { AccountBalanceWalletIcon } from 'components/icons';
 import DashboardHeader from './DashboardHeader';
 import DashboardExpList from './DashboardExpList';
@@ -22,6 +28,7 @@ const Dashboard = ({
   success,
   addExpSuccess,
   addEduSuccess,
+  deleteExpSuccess,
 }) => {
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
@@ -33,7 +40,14 @@ const Dashboard = ({
     return () => {
       clearProfile();
     };
-  }, [getProfile, clearProfile, success, addExpSuccess, addEduSuccess]);
+  }, [
+    getProfile,
+    clearProfile,
+    success,
+    addExpSuccess,
+    addEduSuccess,
+    deleteExpSuccess,
+  ]);
 
   const onOpenCreateDialog = () => setOpenCreateDialog(true);
   const onCloseCreateDialog = () => setOpenCreateDialog(false);
@@ -95,6 +109,7 @@ const Dashboard = ({
           )}
         </div>
       )}
+      {deleteExpSuccess && <SuccessSnackBar msg='Exp Deleted Successfully' />}
     </>
   );
 };
@@ -106,6 +121,7 @@ const mapStateToProps = (state) => ({
   success: state.profileCreate.success,
   addExpSuccess: state.addExp.success,
   addEduSuccess: state.addEdu.success,
+  deleteExpSuccess: state.deleteExp.success,
 });
 
 const mapDispatchToProps = {

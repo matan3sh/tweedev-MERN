@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { createProfile } from 'store/profile-create/actions';
+import { createProfile } from 'store/create-profile/actions';
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button';

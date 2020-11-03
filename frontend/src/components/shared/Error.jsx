@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { clearAuthError } from 'store/user-auth/actions';
-import { clearCreateProfileError } from 'store/profile-create/actions';
+import { clearCreateProfileError } from 'store/create-profile/actions';
 import { clearAddExpError } from 'store/add-experience/actions';
 import { clearAddEduError } from 'store/add-education/actions';
 
