@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import { Avatar, IconButton } from '@material-ui/core';
 import {
@@ -13,11 +14,11 @@ const HomePostItem = ({ post }) => {
       <Avatar src={post.avatar} className='post__avatar' />
       <div className='post__right'>
         <div className='post__header'>
-          <h2>{post.fullName} </h2>
+          <h2>{post.name} </h2>
           <span>&#8228;</span>
           <h5>@{post.username} </h5>
           <span>&#8228;</span>
-          <h5>{post.createdAt}</h5>
+          <h5>{moment(post.createdAt).startOf('hour').fromNow()}</h5>
         </div>
         <p>{post.text}</p>
         <div className='post__footer'>
