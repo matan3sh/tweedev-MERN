@@ -16,6 +16,7 @@ import devProfileReducer from './get-dev-profile/reducer';
 import postsReducer from './get-posts/reducer';
 import likePostReducer from './like-post/reducer';
 import unlikePostReducer from './unlike-post/reducer';
+import postReducer from './get-post/reducer';
 
 const rootReducer = combineReducers({
   userAuth: userAuthReducer,
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   posts: postsReducer,
   likePost: likePostReducer,
   unlikePost: unlikePostReducer,
+  post: postReducer,
 });
 
 const store = createStore(

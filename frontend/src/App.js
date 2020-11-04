@@ -11,6 +11,7 @@ import {
   Profile,
   Dashboard,
   DeveloperProfile,
+  Post,
 } from 'components/pages';
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
               path='/developers/:profileId'
               component={DeveloperProfile}
             />
+            <Route exact path='/posts/:postId' component={Post} />
             <GuestRoute exact path='/login' component={Login} />
             <GuestRoute exact path='/register' component={Register} />
             <Route exact path='/' component={Home} />
