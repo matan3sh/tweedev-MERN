@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getPosts } from 'store/get-posts/actions';
 import { resetLikePost } from 'store/like-post/actions';
 import { resetUnLikePost } from 'store/unlike-post/actions';
+import { resetAddComment } from 'store/add-comment/actions';
 
 import { Error, Loader } from 'components/shared';
 import HomePostItem from './HomePostItem';
@@ -16,13 +17,16 @@ const HomePostList = ({
   unLikePostSuccess,
   resetLikePost,
   resetUnLikePost,
+  addCommentSuccess,
+  resetAddComment,
 }) => {
   useEffect(() => {
     getPosts();
     resetLikePost();
     resetUnLikePost();
+    resetAddComment();
     // eslint-disable-next-line
-  }, [getPosts, likePostSuccess, unLikePostSuccess]);
+  }, [getPosts, likePostSuccess, unLikePostSuccess, addCommentSuccess]);
 
   return (
     <>
@@ -46,12 +50,14 @@ const mapStateToProps = (state) => ({
   errors: state.posts.error,
   likePostSuccess: state.likePost.success,
   unLikePostSuccess: state.unlikePost.success,
+  addCommentSuccess: state.addComment.success,
 });
 
 const mapDispatchToProps = {
   getPosts,
   resetLikePost,
   resetUnLikePost,
+  resetAddComment,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePostList);

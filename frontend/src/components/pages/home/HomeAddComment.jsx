@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { addComment } from 'store/add-comment/actions';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -7,7 +9,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-const HomeAddComment = ({ open, onClose }) => {
+const HomeAddComment = ({ open, onClose, addComment, postId }) => {
+  const [text, setText] = useState('');
   return (
     <Dialog
       open={open}
@@ -19,11 +22,12 @@ const HomeAddComment = ({ open, onClose }) => {
         <TextField
           autoFocus
           margin='dense'
-          id='comment'
           label='Comment'
           helperText='Write a comment about the post'
           multiline
           rows={6}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
           type='text'
           fullWidth
         />
@@ -32,7 +36,17 @@ const HomeAddComment = ({ open, onClose }) => {
         <Button onClick={() => onClose()} color='primary'>
           Cancel
         </Button>
-        <Button onClick={() => onClose()} color='primary'>
+        <Button
+          onClick={() => {
+            if (text === '') return;
+            else {
+              addComment({ text }, postId);
+              setText('');
+              onClose();
+            }
+          }}
+          color='primary'
+        >
           Submit
         </Button>
       </DialogActions>
@@ -40,4 +54,8 @@ const HomeAddComment = ({ open, onClose }) => {
   );
 };
 
-export default HomeAddComment;
+const mapDispatchToProps = {
+  addComment,
+};
+
+export default connect(null, mapDispatchToProps)(HomeAddComment);

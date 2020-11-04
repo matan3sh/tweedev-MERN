@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { getPost, clearPost } from 'store/get-post/actions';
 import { likePost, resetLikePost } from 'store/like-post/actions';
 import { unLikePost, resetUnLikePost } from 'store/unlike-post/actions';
+import { resetAddComment } from 'store/add-comment/actions';
 import moment from 'moment';
 
 import { PageHeader, Loader, Error } from 'components/shared';
 import { PostAddIcon } from 'components/icons';
 import { IconButton } from '@material-ui/core';
 import { ThumbUpAltIcon, ChatBubbleOutlineIcon } from 'components/icons';
+import HomeAddComment from '../home/HomeAddComment';
 import PostComments from './PostComments';
 
 const Post = ({
@@ -25,17 +27,30 @@ const Post = ({
   unlikeSuccess,
   resetLikePost,
   resetUnLikePost,
+  addCommentSuccess,
+  resetAddComment,
 }) => {
+  const [addComment, setAddComment] = useState(false);
+
   useEffect(() => {
     const { postId } = match.params;
     getPost(postId);
     resetLikePost();
     resetUnLikePost();
+    resetAddComment();
     return () => {
       clearPost();
     };
     // eslint-disable-next-line
-  }, [getPost, clearPost, likeSuccess, unlikeSuccess]);
+  }, [getPost, clearPost, likeSuccess, unlikeSuccess, addCommentSuccess]);
+
+  const onOpenAddComment = () => setAddComment(true);
+  const onCloseAddComment = () => setAddComment(false);
+
+  const onAddComment = () => {
+    if (!userInfo) return;
+    else onOpenAddComment();
+  };
 
   const onLikePost = (post) => {
     if (!userInfo) return;
@@ -57,6 +72,11 @@ const Post = ({
 
   return (
     <>
+      <HomeAddComment
+        open={addComment}
+        onClose={onCloseAddComment}
+        postId={post?._id}
+      />
       <PageHeader title='Post' icon={<PostAddIcon />} />
       {errors && <Error errors={errors} />}
       {loading ? (
@@ -95,10 +115,7 @@ const Post = ({
             )}
             <div>
               <span>({post?.comments?.length})</span>
-              <IconButton
-                component='span'
-                onClick={() => console.log('Add Comment')}
-              >
+              <IconButton component='span' onClick={onAddComment}>
                 <ChatBubbleOutlineIcon />
               </IconButton>
             </div>
@@ -111,12 +128,14 @@ const Post = ({
 };
 
 const mapStateToProps = (state) => ({
+  userInfo: state.userAuth.userInfo,
   post: state.post.post,
   loading: state.post.loading,
   errors: state.post.error,
   userInfo: state.userAuth.userInfo,
   likeSuccess: state.likePost.success,
   unlikeSuccess: state.unlikePost.success,
+  addCommentSuccess: state.addComment.success,
 });
 
 const mapDispatchToProps = {
@@ -126,6 +145,7 @@ const mapDispatchToProps = {
   unLikePost,
   resetLikePost,
   resetUnLikePost,
+  resetAddComment,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);

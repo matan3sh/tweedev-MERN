@@ -17,6 +17,7 @@ import postsReducer from './get-posts/reducer';
 import likePostReducer from './like-post/reducer';
 import unlikePostReducer from './unlike-post/reducer';
 import postReducer from './get-post/reducer';
+import addCommentReducer from './add-comment/reducer';
 
 const rootReducer = combineReducers({
   userAuth: userAuthReducer,
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   likePost: likePostReducer,
   unlikePost: unlikePostReducer,
   post: postReducer,
+  addComment: addCommentReducer,
 });
 
 const store = createStore(

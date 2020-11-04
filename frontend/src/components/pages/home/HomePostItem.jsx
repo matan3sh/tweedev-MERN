@@ -48,7 +48,11 @@ const HomePostItem = ({
 
   return (
     <>
-      <HomeAddComment open={addComment} onClose={onCloseAddComment} />
+      <HomeAddComment
+        open={addComment}
+        onClose={onCloseAddComment}
+        postId={post?._id}
+      />
       {errors ||
         (errorsUnLike && <Error errors={errors ? errors : errorsUnLike} />)}
       <div className='post'>
