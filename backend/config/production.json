@@ -1,6 +1,0 @@
-{
-  "mongoURI": "mongodb+srv://matan3sh:matan290190@tweedev.vwgkd.mongodb.net/tweedev_db?retryWrites=true&w=majority",
-  "jwtSecret": "mysecrettoken",
-  "githubClientId": "34879ee4eb8271676c81",
-  "githubSecret": "6ae4d6f8999d535da12213751899cbcffaa10da2"
-}
