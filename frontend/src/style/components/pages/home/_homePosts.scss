@@ -51,6 +51,12 @@
 .post__footer {
   margin-top: 0.5rem;
   display: flex;
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2px;
+  }
 }
 
 @media screen and (max-width: 720px) {

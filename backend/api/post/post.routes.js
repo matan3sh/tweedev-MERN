@@ -42,16 +42,6 @@ router.post(
 // @access Private
 router.delete('/comment/:postId/:commentId', auth, deletePostComment);
 
-// @desc Get single post by id
-// @route GET /api/posts/:postId
-// @access Public
-router.get('/:postId', getPost);
-
-// @desc Delete post
-// @route DELETE /api/posts/:postId
-// @access Private
-router.delete('/:postId', auth, deletePost);
-
 // @desc Like a post
 // @route PUT /api/posts/like/:postId
 // @access Private
@@ -61,5 +51,15 @@ router.put('/like/:postId', auth, likeAPost);
 // @route PUT /api/posts/like/:postId
 // @access Private
 router.put('/unlike/:postId', auth, unlikeAPost);
+
+// @desc Get single post by id
+// @route GET /api/posts/:postId
+// @access Public
+router.get('/:postId', getPost);
+
+// @desc Delete post
+// @route DELETE /api/posts/:postId
+// @access Private
+router.delete('/:postId', auth, deletePost);
 
 module.exports = router;
