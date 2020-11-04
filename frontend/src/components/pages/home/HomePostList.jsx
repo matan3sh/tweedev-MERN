@@ -22,6 +22,7 @@ const HomePostList = ({
   resetAddComment,
   addPostSuccess,
   resetAddPost,
+  deletePostSuccess,
 }) => {
   useEffect(() => {
     getPosts();
@@ -36,6 +37,7 @@ const HomePostList = ({
     unLikePostSuccess,
     addCommentSuccess,
     addPostSuccess,
+    deletePostSuccess,
   ]);
 
   return (
@@ -62,6 +64,7 @@ const mapStateToProps = (state) => ({
   unLikePostSuccess: state.unlikePost.success,
   addCommentSuccess: state.addComment.success,
   addPostSuccess: state.addPost.success,
+  deletePostSuccess: state.deletePost.success,
 });
 
 const mapDispatchToProps = {

@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getPost, clearPost } from 'store/get-post/actions';
 import { likePost, resetLikePost } from 'store/like-post/actions';
 import { unLikePost, resetUnLikePost } from 'store/unlike-post/actions';
 import { resetAddComment } from 'store/add-comment/actions';
-import moment from 'moment';
+import { deletePost, resetDeletePost } from 'store/delete-post/actions';
+import { resetDeleteComment } from 'store/delete-comment/actions';
 
+import moment from 'moment';
 import { PageHeader, Loader, Error } from 'components/shared';
 import { PostAddIcon } from 'components/icons';
 import { IconButton } from '@material-ui/core';
-import { ThumbUpAltIcon, ChatBubbleOutlineIcon } from 'components/icons';
+import {
+  ThumbUpAltIcon,
+  ChatBubbleOutlineIcon,
+  DeleteIcon,
+} from 'components/icons';
 import HomeAddComment from '../home/HomeAddComment';
 import PostComments from './PostComments';
 
@@ -29,7 +36,12 @@ const Post = ({
   resetUnLikePost,
   addCommentSuccess,
   resetAddComment,
+  deletePost,
+  resetDeletePost,
+  resetDeleteComment,
+  deleteCommentSuccess,
 }) => {
+  const history = useHistory();
   const [addComment, setAddComment] = useState(false);
 
   useEffect(() => {
@@ -38,11 +50,20 @@ const Post = ({
     resetLikePost();
     resetUnLikePost();
     resetAddComment();
+    resetDeletePost();
+    resetDeleteComment();
     return () => {
       clearPost();
     };
     // eslint-disable-next-line
-  }, [getPost, clearPost, likeSuccess, unlikeSuccess, addCommentSuccess]);
+  }, [
+    getPost,
+    clearPost,
+    likeSuccess,
+    unlikeSuccess,
+    addCommentSuccess,
+    deleteCommentSuccess,
+  ]);
 
   const onOpenAddComment = () => setAddComment(true);
   const onCloseAddComment = () => setAddComment(false);
@@ -84,12 +105,29 @@ const Post = ({
       ) : (
         <div className='postDetails'>
           <div className='postDetails__header'>
-            <img src={post?.avatar} alt='avatar' />
-            <div>
-              <h3>{post?.name}</h3>
-              <h5>{post?.user?.email}</h5>
-              <small>{moment(post?.createdAt).startOf('hour').fromNow()}</small>
+            <div className='postDetails__header-left'>
+              <img src={post?.avatar} alt='avatar' />
+              <div>
+                <h3>{post?.name}</h3>
+                <h5>{post?.user?.email}</h5>
+                <small>
+                  {moment(post?.createdAt).startOf('hour').fromNow()}
+                </small>
+              </div>
             </div>
+            {userInfo?._id === post?.user?._id && (
+              <div>
+                <IconButton
+                  component='span'
+                  onClick={() => {
+                    deletePost(post?._id);
+                    history.replace('/');
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </div>
+            )}
           </div>
           <div className='postDetails__body'>
             <h2>{post?.text}</h2>
@@ -121,7 +159,7 @@ const Post = ({
               </IconButton>
             </div>
           </div>
-          <PostComments comments={post?.comments} />
+          <PostComments comments={post?.comments} postId={post?._id} />
         </div>
       )}
     </>
@@ -136,6 +174,7 @@ const mapStateToProps = (state) => ({
   likeSuccess: state.likePost.success,
   unlikeSuccess: state.unlikePost.success,
   addCommentSuccess: state.addComment.success,
+  deleteCommentSuccess: state.deleteComment.success,
 });
 
 const mapDispatchToProps = {
@@ -146,6 +185,9 @@ const mapDispatchToProps = {
   resetLikePost,
   resetUnLikePost,
   resetAddComment,
+  deletePost,
+  resetDeletePost,
+  resetDeleteComment,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);

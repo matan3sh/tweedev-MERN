@@ -19,6 +19,8 @@ import unlikePostReducer from './unlike-post/reducer';
 import postReducer from './get-post/reducer';
 import addCommentReducer from './add-comment/reducer';
 import addPostReducer from './add-post/reducer';
+import deletePostReducer from './delete-post/reducer';
+import deleteCommentReducer from './delete-comment/reducer';
 
 const rootReducer = combineReducers({
   userAuth: userAuthReducer,
@@ -38,6 +40,8 @@ const rootReducer = combineReducers({
   post: postReducer,
   addComment: addCommentReducer,
   addPost: addPostReducer,
+  deletePost: deletePostReducer,
+  deleteComment: deleteCommentReducer,
 });
 
 const store = createStore(
