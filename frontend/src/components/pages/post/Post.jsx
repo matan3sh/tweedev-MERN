@@ -87,6 +87,7 @@ const Post = ({
             <img src={post?.avatar} alt='avatar' />
             <div>
               <h3>{post?.name}</h3>
+              <h5>{post?.user?.email}</h5>
               <small>{moment(post?.createdAt).startOf('hour').fromNow()}</small>
             </div>
           </div>

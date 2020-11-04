@@ -36,7 +36,11 @@ addPost = async (req, res) => {
 
 getPost = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.postId);
+    const post = await Post.findById(req.params.postId).populate(
+      'user',
+      'email',
+      User
+    );
     if (!post) return res.status(404).json({ msg: 'Post not found' });
     res.json(post);
   } catch (error) {

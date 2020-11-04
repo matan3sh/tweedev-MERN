@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addPost } from 'store/add-post/actions';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -7,8 +10,20 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-const TweetDialog = ({ open, onClose }) => {
+const TweetDialog = ({ open, onClose, addPost }) => {
+  const history = useHistory();
   const [text, setText] = useState('');
+
+  const onAddPost = () => {
+    if (text === '') return;
+    else {
+      addPost({ text });
+      onClose();
+      setText('');
+      history.replace('/');
+    }
+  };
+
   return (
     <Dialog open={open} onClose={onClose} aria-labelledby='form-dialog-title'>
       <DialogTitle id='form-dialog-title'>Tweet</DialogTitle>
@@ -29,7 +44,7 @@ const TweetDialog = ({ open, onClose }) => {
         <Button onClick={onClose} color='primary'>
           Cancel
         </Button>
-        <Button onClick={onClose} color='primary'>
+        <Button onClick={onAddPost} color='primary'>
           Tweet
         </Button>
       </DialogActions>
@@ -37,4 +52,8 @@ const TweetDialog = ({ open, onClose }) => {
   );
 };
 
-export default TweetDialog;
+const mapDispatchToProps = {
+  addPost,
+};
+
+export default connect(null, mapDispatchToProps)(TweetDialog);
