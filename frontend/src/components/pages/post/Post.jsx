@@ -132,7 +132,6 @@ const mapStateToProps = (state) => ({
   post: state.post.post,
   loading: state.post.loading,
   errors: state.post.error,
-  userInfo: state.userAuth.userInfo,
   likeSuccess: state.likePost.success,
   unlikeSuccess: state.unlikePost.success,
   addCommentSuccess: state.addComment.success,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from 'store/user-auth/actions';
@@ -17,8 +17,14 @@ import {
 import { Button, IconButton } from '@material-ui/core';
 
 import CodeIcon from '@material-ui/icons/Code';
+import TweetDialog from 'components/dialog/TweetDialog';
 
 const Sidebar = ({ userInfo, logout }) => {
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const onCloseDialog = () => setOpenDialog(false);
+  const onOpenDialog = () => setOpenDialog(true);
+
   const userLinks = (
     <>
       <div className='sidebar__options'>
@@ -55,10 +61,18 @@ const Sidebar = ({ userInfo, logout }) => {
           <LockIcon /> <h3>Logout</h3>
         </span>
       </div>
-      <Button variant='outlined' className='sidebar__button'>
+      <Button
+        variant='outlined'
+        className='sidebar__button'
+        onClick={onOpenDialog}
+      >
         <span>Tweet</span>
       </Button>
-      <IconButton className='sidebar__button-mobile' component='span'>
+      <IconButton
+        className='sidebar__button-mobile'
+        component='span'
+        onClick={onOpenDialog}
+      >
         <PostAddIcon />
       </IconButton>
     </>
@@ -97,13 +111,16 @@ const Sidebar = ({ userInfo, logout }) => {
     </div>
   );
   return (
-    <div className='sidebar'>
-      <IconButton component='span' className='sidebar__logo'>
-        <TwitterIcon className='sidebar__twitterIcon' />
-        <CodeIcon className='sidebar__twitterIcon-code' />
-      </IconButton>
-      {!userInfo ? guestLinks : userLinks}
-    </div>
+    <>
+      <TweetDialog open={openDialog} onClose={onCloseDialog} />
+      <div className='sidebar'>
+        <IconButton component='span' className='sidebar__logo'>
+          <TwitterIcon className='sidebar__twitterIcon' />
+          <CodeIcon className='sidebar__twitterIcon-code' />
+        </IconButton>
+        {!userInfo ? guestLinks : userLinks}
+      </div>
+    </>
   );
 };
 

@@ -7,6 +7,7 @@ export const addComment = (comment, postId) => async (dispatch, getState) => {
   } = getState();
   const config = {
     headers: {
+      'Content-Type': 'application/json',
       'x-auth-token': `${userInfo.token}`,
     },
   };

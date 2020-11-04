@@ -4,6 +4,7 @@ import { getPosts } from 'store/get-posts/actions';
 import { resetLikePost } from 'store/like-post/actions';
 import { resetUnLikePost } from 'store/unlike-post/actions';
 import { resetAddComment } from 'store/add-comment/actions';
+import { resetAddPost } from 'store/add-post/actions';
 
 import { Error, Loader } from 'components/shared';
 import HomePostItem from './HomePostItem';
@@ -19,14 +20,23 @@ const HomePostList = ({
   resetUnLikePost,
   addCommentSuccess,
   resetAddComment,
+  addPostSuccess,
+  resetAddPost,
 }) => {
   useEffect(() => {
     getPosts();
     resetLikePost();
     resetUnLikePost();
     resetAddComment();
+    resetAddPost();
     // eslint-disable-next-line
-  }, [getPosts, likePostSuccess, unLikePostSuccess, addCommentSuccess]);
+  }, [
+    getPosts,
+    likePostSuccess,
+    unLikePostSuccess,
+    addCommentSuccess,
+    addPostSuccess,
+  ]);
 
   return (
     <>
@@ -51,6 +61,7 @@ const mapStateToProps = (state) => ({
   likePostSuccess: state.likePost.success,
   unLikePostSuccess: state.unlikePost.success,
   addCommentSuccess: state.addComment.success,
+  addPostSuccess: state.addPost.success,
 });
 
 const mapDispatchToProps = {
@@ -58,6 +69,7 @@ const mapDispatchToProps = {
   resetLikePost,
   resetUnLikePost,
   resetAddComment,
+  resetAddPost,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePostList);

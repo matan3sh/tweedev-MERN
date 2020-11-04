@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { addPost } from 'store/add-post/actions';
 
 import { Button, Avatar, IconButton } from '@material-ui/core';
 import { WallpaperIcon, SentimentVerySatisfiedIcon } from 'components/icons';
 
-const HomeTweetBox = ({ userInfo }) => {
+const HomeTweetBox = ({ userInfo, addPost }) => {
   const [tweet, setTweet] = useState('');
+
+  const onAddPost = () => {
+    addPost({ text: tweet });
+    setTweet('');
+  };
+
   return (
     <div className='tweetBox'>
       {userInfo === null ? (
@@ -65,6 +72,7 @@ const HomeTweetBox = ({ userInfo }) => {
             <Button
               className={`${tweet === '' && 'disabled'}`}
               disabled={tweet === ''}
+              onClick={() => onAddPost()}
             >
               Tweet
             </Button>
@@ -79,4 +87,8 @@ const mapStateToProps = (state) => ({
   userInfo: state.userAuth.userInfo,
 });
 
-export default connect(mapStateToProps, null)(HomeTweetBox);
+const mapDispatchToProps = {
+  addPost,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeTweetBox);
